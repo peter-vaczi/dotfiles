@@ -103,4 +103,4 @@ cmd = ['task', 'add']
 cmd.append('due:%s' % start.strftime(DATE_FORMAT))
 cmd.append('"%s (where: %s, duration: %s)"' % (summary, location, stop - start))
 
-# sys.exit(subprocess.call(cmd))
+sys.exit(subprocess.call(cmd))
