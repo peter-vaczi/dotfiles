@@ -1,0 +1,66 @@
+# Sample minimal config file.  Copy this to ~/.offlineimaprc and edit to
+# suit to get started fast.
+
+[general]
+metadata = ~/.offlineimap
+#accounts = nsn
+accounts = nsn,gmail
+
+maxsyncaccounts = 3
+
+ui = Noninteractive.Basic, 
+     Noninteractive.Quiet
+#TTY.TTYUI,
+#Curses.Blinkenlights, 
+
+ignore-readonly = no
+
+# ----------------------------- nsn -------------------------------------------
+[Account nsn]
+localrepository = LocalNsn
+remoterepository = RemoteNsn
+autorefresh = 5
+quick = 10
+
+[Repository LocalNsn]
+type = Maildir
+localfolders = ~/Mail/nsn
+subscribedonly = yes
+
+[Repository RemoteNsn]
+type = IMAP
+remotehost = webmail.nsn-intra.net
+remoteport = 993
+remoteuser = Nsn-intra\vaczi\peter.vaczi
+ssl = yes
+reference = Inbox
+
+# ----------------------------- gmail -----------------------------------------
+[Account gmail]
+localrepository = LocalGmail
+remoterepository = RemoteGmail
+#autorefresh = 5
+#quick = 10
+
+[Repository LocalGmail]
+type = Maildir
+localfolders = ~/Mail/gmail
+
+[Repository RemoteGmail]
+type = Gmail
+remoteuser = peter.vaczi@gmail.com
+realdelete = no
+# nametrans = lambda foldername: re.sub ('^\[gmail\]', 'bak',
+#                                re.sub ('sent_mail', 'sent',
+#                                re.sub ('starred', 'flagged',
+#                                re.sub (' ', '_', foldername.lower()))))
+# folderfilter = lambda foldername: foldername not in '[Gmail]/All Mail'
+
+# ----------- generate folder list for mutt------------------------------------
+[mbnames]
+enabled = yes
+filename = ~/.mutt/mailboxes
+header = "mailboxes "
+peritem = "+%(accountname)s/%(foldername)s"
+sep = " "
+footer = "\n"

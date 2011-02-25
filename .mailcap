@@ -1,0 +1,6 @@
+text/html; elinks --dump %s | less
+text/plain; less
+
+image/*; feh %s
+
+application/vnd.ms-excel; ooffice %s
