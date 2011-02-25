@@ -65,6 +65,7 @@
 ;; ---------------------------------------------------------------------
 ; revert buffer
 (defun my-revert() (interactive) (revert-buffer nil t))
+(global-set-key (kbd "M-r") 'my-revert)
 
 ;; ---------------------------------------------------------------------
 ;; some convenience features
@@ -79,6 +80,9 @@
   "Moves to beginning-of-line, or from there to the first non-whitespace character."
   (interactive "p")
   (if (and (looking-at "^") (= arg 1)) (skip-chars-forward " \t") (move-beginning-of-line arg)))
+
+(global-set-key "\C-a" 'dev-studio-beginning-of-line)
+(global-set-key [home] 'dev-studio-beginning-of-line)
 
 ;; ---------------------------------------------------------------------
 ;; c++ mode 
@@ -104,20 +108,9 @@
 (add-hook 'c-mode-hook 'my-c++-mode-hook)
 (add-hook 'c++-mode-hook 'my-c++-mode-hook)
 
-;; ; compile
-;; (defun my-compile() (interactive) 
-
-;;   (dir (read-directory-name "Base directory: "
-;;                             nil default-directory t)))
-
-
 ;; ---------------------------------------------------------------------
 ; global key bindings
-(global-set-key (kbd "M-r") 'my-revert)
 (global-set-key (kbd "M-g") 'goto-line)
 (global-set-key (kbd "M-f") 'find-file-at-point)
 (global-set-key (kbd "<f7>") 'rgrep)
 (global-set-key (kbd "<f8>") 'shell)
-;; (global-set-key (kbd "<f9>") 'my-compile)
-(global-set-key "\C-a" 'dev-studio-beginning-of-line)
-(global-set-key [home] 'dev-studio-beginning-of-line)
