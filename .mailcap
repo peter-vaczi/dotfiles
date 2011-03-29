@@ -1,5 +1,11 @@
-text/html; elinks --dump %s | less
-text/plain; less
+text/html;     elinks --dump %s ; copiousoutput
+text/plain;    less
+text/calendar; ~/usr/bin/cal2task %s
+
 image/*; feh %s
-application/vnd.ms-excel; ooffice %s
-text/calendar; cal2task %s
+
+application/vnd.ms-excel;      ooffice %s
+application/vnd.ms-powerpoint; ooffice %s
+application/msword;            ooffice %s
+
+application/pdf;               okular %s
