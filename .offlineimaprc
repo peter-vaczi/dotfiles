@@ -19,8 +19,8 @@ ignore-readonly = no
 [Account nsn]
 localrepository = LocalNsn
 remoterepository = RemoteNsn
-autorefresh = 5
-quick = 10
+#autorefresh = 5
+#quick = 10
 
 [Repository LocalNsn]
 type = Maildir
