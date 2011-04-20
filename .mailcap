@@ -4,8 +4,8 @@ text/calendar; cal2task %s
 
 image/*; feh %s
 
-application/vnd.ms-excel;      ooffice %s
-application/vnd.ms-powerpoint; ooffice %s
-application/msword;            ooffice %s
+application/vnd.ms-excel;      localc %s
+application/vnd.ms-powerpoint; loimpress %s
+application/msword;            lowriter %s
 
 application/pdf;               okular %s
