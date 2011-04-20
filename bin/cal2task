@@ -47,6 +47,7 @@ print 'participants:'
 for att in request.vevent.contents['attendee']:
     print '  %s' % format_name(att)
     
+print 'description : %s' % description
 print
 print 'summary : %s' % summary
 print 'sender  : %s' % organizer
@@ -66,42 +67,48 @@ elif 't' == choice:
 elif 't' == choice:
     choice = 'DECLINED'
 else: 
-    sys.exit(0)
+    choice = None
 
-# generate the response
-response = vobject.newFromBehavior('vcalendar')
-response.add('method')
-response.method.value = "REPLY"
+if choice:
+    # generate the response
+    response = vobject.newFromBehavior('vcalendar')
+    response.add('method')
+    response.method.value = "REPLY"
 
-response.add('vevent')
-for i in ["uid", "summary", "dtstart", "dtend", "organizer"]:
-    copy_value(request, response, i)
+    response.add('vevent')
+    for i in ["uid", "summary", "dtstart", "dtend", "organizer"]:
+        copy_value(request, response, i)
 
-response.vevent.add('dtstamp')
-response.vevent.dtstamp.value = datetime.datetime.utcnow().replace(
-    tzinfo = request.vevent.dtstamp.value.tzinfo)
+    response.vevent.add('dtstamp')
+    response.vevent.dtstamp.value = datetime.datetime.utcnow().replace(
+        tzinfo = request.vevent.dtstamp.value.tzinfo)
 
-response.vevent.add('attendee')
-response.vevent.attendee.value = 'mailto:%s' % EMAIL
-response.vevent.attendee.params['PARTSTAT'] = [choice]
+    response.vevent.add('attendee')
+    response.vevent.attendee.value = 'mailto:%s' % EMAIL
+    response.vevent.attendee.params['PARTSTAT'] = [choice]
 
-# create an ics file and send it
-fd, path = tempfile.mkstemp(suffix='.ics')
-os.write(fd, response.serialize())
-os.close(fd)
+    # create an ics file and send it
+    fd, path = tempfile.mkstemp(suffix='.ics')
+    os.write(fd, response.serialize())
+    os.close(fd)
 
-sendCmd = ['mutt',
-           '-a', path, # attachment
-           '-s', '%s: %s' % (choice.capitalize(), summary ), # subject
-           '--', sender]
-#subprocess.call(['cat', path])
+    sendCmd = ['mutt',
+               '-a', path, # attachment
+               '-s', '%s: %s' % (choice.capitalize(), summary ), # subject
+               '--', sender]
+    # subprocess.call(['cat', path])
+    subprocess.call(sendCmd)
 
-os.unlink(path)
+    os.unlink(path)
 
-# add the event to taskwarrior
-cmd = ['task', 'add']
-cmd.append('due:%s' % start.strftime(DATE_FORMAT))
-cmd.append('"%s (where: %s, duration: %s)"' % (summary, location, stop - start))
+choice = ''
+while choice.lower() not in ['y', 'n']:
+   choice = raw_input('\nSave in calendar [y/n] ? ')
 
-if choice in ['ACCEPTED', 'TENTATIVE']:
+if 'y' == choice:
+    # add the event to taskwarrior
+    cmd = ['task', 'add']
+    cmd.append('due:%s' % start.strftime(DATE_FORMAT))
+    cmd.append('"%s (where: %s, duration: %s)"' % (summary, location, stop - start))
+
     subprocess.call(cmd)
