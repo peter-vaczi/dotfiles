@@ -64,6 +64,8 @@ settings = {
   };
 };
 
+ignores = ( { level = "JOINS PARTS QUITS NICKS"; } );
+
 hilights = (
   { text = "ptr"; nick = "no"; word = "no"; fullword = "yes"; },
   { text = "";    nick = "no"; word = "no"; fullword = "yes"; }
