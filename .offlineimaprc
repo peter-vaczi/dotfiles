@@ -8,8 +8,8 @@ accounts = nsn
 
 maxsyncaccounts = 3
 
-ui = Noninteractive.Basic, 
-     Noninteractive.Quiet
+ui = Noninteractive.Basic
+#     Noninteractive.Quiet
 #TTY.TTYUI,
 #Curses.Blinkenlights, 
 
