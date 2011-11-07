@@ -50,6 +50,9 @@ bindsym $mod+Shift+Q kill
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run -i
 
+# move the mouse to the topright corner
+bindsym $mod+m exec xdotool mousemove 1270 0
+
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
