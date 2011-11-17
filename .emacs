@@ -8,7 +8,7 @@
  '(comment-column 32)
  '(compilation-scroll-output t)
  '(compilation-window-height 15)
- '(compile-command "~/usr/bin/cmt test LOG_LEVEL=INFO")
+ '(compile-command "make")
  '(current-language-environment "English")
  '(erc-autoaway-mode t)
  '(erc-minibuffer-notice t)
@@ -112,5 +112,7 @@
 ; global key bindings
 (global-set-key (kbd "M-g") 'goto-line)
 (global-set-key (kbd "M-f") 'find-file-at-point)
+(global-set-key (kbd "<f2>") 'next-error)
 (global-set-key (kbd "<f7>") 'rgrep)
 (global-set-key (kbd "<f8>") 'shell)
+(global-set-key (kbd "<f12>") 'recompile)
