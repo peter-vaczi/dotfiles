@@ -25,13 +25,10 @@ new_window 1pixel
 #popup_during_fullscreen <ignore|leave_fullscreen>
 workspace_auto_back_and_forth yes
 
-# finds out, if available)
 exec --no-startup-id feh --bg-scale ~/.i3/wn_1280x1024.png # set the background
-#exec i3bar -dtop                           # Start i3bar to display a workspace bar 
-#exec i3status | dzen2 -ta r -tw 950 -x 170 -bg '#000000' -e 'sigusr1=raise' # display the statusbar
 
 bar {
-    status_command i3status
+    # status_command i3status
     mode dock
     position top
     workspace_buttons yes
@@ -46,6 +43,8 @@ bar {
            urgent_workspace   #ffffff #900000
     }
 }
+
+exec --no-startup-id i3status | dzen2 -ta r -tw 950 -x 170 -bg '#000000' -e 'sigusr1=raise' # display the statusbar
 
 exec --no-startup-id parcellite
 #exec --no-startup-id wicd-gtk
