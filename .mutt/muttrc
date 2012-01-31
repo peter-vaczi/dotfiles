@@ -20,9 +20,9 @@ set envelope_from = "yes"
 set from="peter.vaczi@nsn.com"
 set realname="Peter Vaczi"
 set copy                                  # Keep copies of outgoing mail...
-set record="+nsn/Sent"                    # ... and it gets saved in +nsn/Sent.
+set record="+Sent"                    # ... and it gets saved in +nsn/Sent.
 
-set postponed="+nsn/Drafts"
+set postponed="+Drafts"
 my_hdr From: Peter Vaczi <peter.vaczi@nsn.com>
 set sendmail="/usr/bin/msmtp -a nsn"
 

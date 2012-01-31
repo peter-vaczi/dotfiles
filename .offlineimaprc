@@ -4,16 +4,8 @@
 [general]
 metadata = ~/.offlineimap
 accounts = nsn
-#accounts = nsn,gmail
-
 maxsyncaccounts = 3
-
-ui = Noninteractive.Basic
-
- 
-# Noninteractive.Quiet
-#TTY.TTYUI,
-#Curses.Blinkenlights, 
+ui = basic
 
 ignore-readonly = no
 
@@ -21,6 +13,8 @@ ignore-readonly = no
 [Account nsn]
 localrepository = LocalNsn
 remoterepository = RemoteNsn
+status_backend = sqlite
+
 # autorefresh = 10
 # quick = 10
 
@@ -36,27 +30,7 @@ remoteport = 993
 remoteuser = Nsn-intra\vaczi\peter.vaczi
 ssl = yes
 reference = Inbox
-
-# ----------------------------- gmail -----------------------------------------
-[Account gmail]
-localrepository = LocalGmail
-remoterepository = RemoteGmail
-# autorefresh = 5
-# quick = 10
-
-[Repository LocalGmail]
-type = Maildir
-localfolders = ~/Mail/gmail
-
-[Repository RemoteGmail]
-type = Gmail
-remoteuser = peter.vaczi@gmail.com
-realdelete = no
-nametrans = lambda foldername: re.sub ('^\[gmail\]', 'bak',
-                               re.sub ('sent_mail', 'sent',
-                               re.sub ('starred', 'flagged',
-                               re.sub (' ', '_', foldername.lower()))))
-folderfilter = lambda foldername: foldername not in '[Gmail]/All Mail'
+#folderfilter = lambda foldername: foldername in ['INBOX', 'INBOX.save']
 
 # ----------- generate folder list for mutt------------------------------------
 [mbnames]
