@@ -1,11 +1,14 @@
 text/html;     elinks --dump %s ; copiousoutput
-text/plain;    less
+text/plain;    less %s
 text/calendar; cal2task %s
 
 image/*; feh %s
 
-application/vnd.ms-excel;      localc %s
-application/vnd.ms-powerpoint; loimpress %s
-application/msword;            lowriter %s
+application/vnd.ms-excel;      ooffice %s
+application/vnd.ms-powerpoint; ooffice %s
+application/msword;            antiword %s | less
 
-application/pdf;               okular %s
+application/pdf;               llpp %s
+
+application/x-zip-compressed;        aunpack -l %s; copiousoutput
+
