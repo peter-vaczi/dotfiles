@@ -129,23 +129,14 @@ vicious.register(battwidget, vicious.widgets.bat,
                     return string.format('[ bat: %2d%% %6s ]', args[2], args[3])
                  end, 13, "BAT0")
 
-cpu0 = awful.widget.progressbar()
-cpu0:set_width(8)
-cpu0:set_height(16)
-cpu0:set_vertical(true)
-cpu0:set_background_color('#494B4F')
-cpu0:set_color('#AECF96')
-cpu0:set_gradient_colors({ '#AECF96', '#88A175', '#FF5656' })
-vicious.register(cpu0, vicious.widgets.cpu, "$2")
-
-cpu1 = awful.widget.progressbar()
-cpu1:set_width(8)
-cpu1:set_height(16)
-cpu1:set_vertical(true)
-cpu1:set_background_color('#494B4F')
-cpu1:set_color('#AECF96')
-cpu1:set_gradient_colors({ '#AECF96', '#88A175', '#FF5656' })
-vicious.register(cpu1, vicious.widgets.cpu, "$3")
+cpu = awful.widget.progressbar()
+cpu:set_width(8)
+cpu:set_height(16)
+cpu:set_vertical(true)
+cpu:set_background_color('#494B4F')
+cpu:set_color('#AECF96')
+cpu:set_gradient_colors({ '#AECF96', '#88A175', '#FF5656' })
+vicious.register(cpu, vicious.widgets.cpu, "$1")
 
 mpdwidget = widget({ type = "textbox" })
 vicious.register(mpdwidget, vicious.widgets.mpd,
@@ -263,8 +254,7 @@ for s = 1, screen.count() do
       },
       mylayoutbox[s],
       mytextclock,
-      cpu0,
-      cpu1,
+      cpu,
       battwidget,
       memwidget,
       volumewidget,
