@@ -74,6 +74,10 @@
 (setq visible-bell 0)
 (setq ring-bell-function 'ignore)
 
+; xcscope for speed up C/C++ development
+(require 'xcscope)
+(setq cscope-do-not-update-database t)
+
 ;; ---------------------------------------------------------------------
 ;; home button behaviour
 (defun dev-studio-beginning-of-line (arg)
@@ -130,17 +134,18 @@
 (global-set-key (kbd "M-f") 'find-file-at-point)
 ; "<f1>" used by awesome/roxterm
 (global-set-key (kbd "<f2>") 'next-error)
+(global-set-key (kbd "M-<f2>") 'previous-error)
 ; "<f3>" kmacro-start-macro-or-insert-counter
 ; "<f4>" kmacro-end-or-call-macro
 ; "<f5>" undefined
 ; "<f6>" undefined
 (global-set-key (kbd "<f7>") 'rgrep)
 (global-set-key (kbd "<f8>") 'shell)
-; "<f9>" undefined
+(global-set-key (kbd "<f9>") 'man)
 ; "<f10>" menu-bar-open
 ; "<f11>" used by awesome
 (global-set-key (kbd "<f12>") 'recompile)
 (global-set-key (kbd "C-a")   'dev-studio-beginning-of-line)
 (global-set-key (kbd "<home>")  'dev-studio-beginning-of-line)
-(global-set-key (kbd "C-<end>")   'beginning-of-buffer)
-(global-set-key (kbd "C-<home>")  'end-of-buffer)
+(global-set-key (kbd "C-<end>")   'end-of-buffer)
+(global-set-key (kbd "C-<home>")  'beginning-of-buffer)
