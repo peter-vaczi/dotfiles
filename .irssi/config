@@ -7,15 +7,13 @@ servers = (
   }
 );
 
-chatnets = {
-  nsn = { type = "IRC"; };
-};
+chatnets = { nsn = { type = "IRC"; }; };
 
 channels = (
-  { name = "#awesome";    chatnet = "nsn"; autojoin = "Yes"; },
+  { name = "#awesome"; chatnet = "nsn"; autojoin = "Yes"; },
   { name = "#ZsirTeknos"; chatnet = "nsn"; autojoin = "Yes"; },
-  { name = "#dxa";        chatnet = "nsn"; autojoin = "Yes"; }
-  { name = "#off";        chatnet = "nsn"; autojoin = "Yes"; }
+  { name = "#dxa"; chatnet = "nsn"; autojoin = "Yes"; },
+  { name = "#off"; chatnet = "nsn"; autojoin = "Yes"; }
 );
 
 aliases = {
@@ -36,11 +34,7 @@ aliases = {
 
 
 settings = {
-  core = { 
-    real_name = "Peter Vaczi";
-    user_name = "-ptr-";
-    nick = "ptr";
-  };
+  core = { real_name = "Peter Vaczi"; user_name = "-ptr-"; nick = "ptr"; };
 
   "fe-text" = { actlist_sort = "refnum"; };
 
@@ -61,6 +55,8 @@ settings = {
     awl_sbar_maxlength = "no";
     awl_maxlines = "1";
     screen_away_message = "= screen detached, be back later.";
+    nicklist_width = "15";
+    nicklist_automode = "SCREEN";
   };
 };
 
@@ -68,7 +64,7 @@ ignores = ( { level = "JOINS PARTS QUITS NICKS"; } );
 
 hilights = (
   { text = "ptr"; nick = "no"; word = "no"; fullword = "yes"; },
-  { text = "";    nick = "no"; word = "no"; fullword = "yes"; }
+  { text = ""; nick = "no"; word = "no"; fullword = "yes"; }
 );
 
 logs = { };
@@ -338,3 +334,4 @@ keyboard = (
   { key = "meta-j"; id = "scroll_forward"; data = ""; },
   { key = "meta-k"; id = "scroll_backward"; data = ""; }
 );
+statusbar = { default = { dccstat = { }; }; };

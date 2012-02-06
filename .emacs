@@ -29,7 +29,6 @@
  '(mouse-wheel-follow-mouse t)
  '(mouse-wheel-mode t nil (mwheel))
  '(printer-name "bucit25b5.nsn-net.net")
- '(server-mode f)
  '(show-paren-mode t nil (paren))
  '(show-paren-style (quote expression))
  '(transient-mark-mode t)
