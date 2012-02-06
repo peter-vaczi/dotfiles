@@ -19,6 +19,7 @@ floating_modifier $mod
 
 #default_orientation <horizontal|vertical|auto>
 #workspace_layout <default|stacking|tabbed>
+workspace_layout stacking
 #new_window <normal|1pixel|none>
 new_window 1pixel
 #focus_follows_mouse <yes|no>
@@ -48,7 +49,7 @@ exec --no-startup-id i3status | dzen2 -ta r -tw 950 -x 170 -bg '#000000' -e 'sig
 
 exec --no-startup-id parcellite
 #exec --no-startup-id wicd-gtk
-exec --no-startup-id skype
+#exec --no-startup-id skype
 
 assign [class="Firefox"] 2
 assign [class="Skype"] 3
