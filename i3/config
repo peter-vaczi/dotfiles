@@ -52,7 +52,7 @@ exec --no-startup-id parcellite
 #exec --no-startup-id skype
 
 assign [class="Firefox"] 2
-assign [class="Skype"] 3
+assign [class="Skype"] 1
 
 # start a terminal
 # bindsym $mod+Return exec urxvt
