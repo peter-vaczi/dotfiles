@@ -1,0 +1,77 @@
+#!/usr/bin/env python
+
+import urllib.request, urllib.parse, urllib.error
+import sys
+import re
+import os
+
+masks = {
+    "255.255.255.255" : 32,
+    "255.255.255.254" : 31,
+    "255.255.255.252" : 30,
+    "255.255.255.248" : 29,
+    "255.255.255.240" : 28,
+    "255.255.255.224" : 27,
+    "255.255.255.192" : 26,
+    "255.255.255.128" : 25,
+    "255.255.255.0"   : 24,
+    "255.255.254.0"   : 23,
+    "255.255.252.0"   : 22,
+    "255.255.248.0"   : 21,
+    "255.255.240.0"   : 20,
+    "255.255.224.0"   : 19,
+    "255.255.192.0"   : 18,
+    "255.255.128.0"   : 17,
+    "255.255.0.0"     : 16,
+    "255.254.0.0"     : 15,
+    "255.252.0.0"     : 14,
+    "255.248.0.0"     : 13,
+    "255.240.0.0"     : 12,
+    "255.224.0.0"     : 11,
+    "255.192.0.0"     : 10,
+    "255.128.0.0"     : 9,
+    "255.0.0.0"       : 8,
+}
+
+def usage():
+    print("vpnc <connect|disconnect>")
+    sys.exit(1)
+
+def execCmd(arg, lines):
+    import subprocess
+    cmd = subprocess.Popen(arg, stdout = subprocess.PIPE, stderr = subprocess.STDOUT, shell = True)
+    ret = cmd.wait()
+    lines.extend(cmd.stdout.readlines())
+    return ret
+
+def vpnc_connect():
+    defaultRoute = []
+    execCmd("ip route | grep default", defaultRoute)
+    os.system('vpnc')
+    proxyPac = urllib.request.urlopen('http://proxyconf.emea.nsn-net.net/proxy.pac')
+    for line in proxyPac.readlines():
+        match = re.search('isInNet.+"([0-9.]+)","([0-9.]+)".+"DIRECT"', line.decode())
+        if match:
+            (ip,mask) = (match.group(1), match.group(2))
+            if "192.168.0.0" != ip:
+                bits = masks[mask]
+                if bits:
+                    if 0 != os.system('ip route add %s/%s dev tun0' % (ip,bits)):
+                        print('  ip: %s, mask: %s' % (ip, mask))
+                else:
+                    print('netmask %s not configured, update this script' % mask)
+    os.system('ip route del default')
+    os.system('ip route add %s' % defaultRoute[0].decode())
+
+def vpnc_disconnect():
+    os.system('vpnc-disconnect')
+
+if 2 == len(sys.argv): 
+    if "connect"    == sys.argv[1]: 
+        print('connecting..')
+        sys.exit(vpnc_connect())
+    elif "disconnect" == sys.argv[1]: 
+        print('disconnecting..')
+        sys.exit(vpnc_disconnect())
+
+usage()
