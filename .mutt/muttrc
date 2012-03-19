@@ -33,7 +33,8 @@ send-hook 'nsn/' "set mime_forward signature='-ptr-'"
 #
 set alias_file=~/.mutt/aliases
 source ~/.mutt/aliases
-set query_command= "abook --mutt-query '%s'"
+#set query_command="abook --mutt-query '%s'"
+set query_command="~/.mutt/getAddresses.py '%s'"
 macro index,pager A "<pipe-message>abook --add-email-quiet<return>" "add the sender address to abook"
 
 #
