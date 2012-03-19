@@ -10,8 +10,8 @@ servers = (
 chatnets = { nsn = { type = "IRC"; }; };
 
 channels = (
-  { name = "#awesome"; chatnet = "nsn"; autojoin = "Yes"; },
-  { name = "#ZsirTeknos"; chatnet = "nsn"; autojoin = "Yes"; },
+  { name = "#awesome"; chatnet = "nsn"; autojoin = "No"; },
+  { name = "#ZsirTeknos"; chatnet = "nsn"; autojoin = "No"; },
   { name = "#dxa"; chatnet = "nsn"; autojoin = "Yes"; },
   { name = "#off"; chatnet = "nsn"; autojoin = "Yes"; }
 );
