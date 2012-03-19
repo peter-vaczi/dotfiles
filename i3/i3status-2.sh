@@ -1,7 +1,7 @@
 #!/bin/sh
 # shell script to prepend i3status with more stuff
 
-i3status -c ~/.i3/i3status.volume.conf | while :
+i3status -c ~/.i3/i3status-2.conf | while :
 do
     read i3StatusLine 
 
@@ -26,5 +26,5 @@ do
     fi
 
     # put it together
-    echo "${currentTrack}${irssiStatus}${mails}${i3StatusLine}"
+    echo "${irssiStatus}${mails}${currentTrack}${i3StatusLine}"
 done
