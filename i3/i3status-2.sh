@@ -5,12 +5,6 @@ i3status -c ~/.i3/i3status.volume.conf | while :
 do
     read i3StatusLine 
 
-    # get the current mpd line
-    currentTrack=`mpc current`
-    if [ "x" != "x${currentTrack}" ]; then
-        currentTrack="${currentTrack}^fg(#333333)^p(5;-2)^ro(2)^p()^fg()^p(5)"
-    fi
-
     # status from irssi
     irssiStatus=`cat ~/.irssi_status`
     if [ "x" != "x${irssiStatus}" ]; then
@@ -23,6 +17,12 @@ do
         mails="^fg(#00FF00)mails: ${mails}^fg(#333333)^p(5;-2)^ro(2)^p()^fg()^p(5)"
     else
         mails=""
+    fi
+
+    # get the current mpd line
+    currentTrack=`mpc current`
+    if [ "x" != "x${currentTrack}" ]; then
+        currentTrack="${currentTrack}^fg(#333333)^p(5;-2)^ro(2)^p()^fg()^p(5)"
     fi
 
     # put it together
