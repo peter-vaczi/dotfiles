@@ -91,30 +91,44 @@ class CustomApplications(DefaultApps):
                 """How to determine the default application?"""
                 f = c.file
                 
+                if f.extension is not None:
+                        if f.extension in ('pdf', ):
+                                c.flags='d'
+                                return self.either(c, 'llpp', 'mupdf')
+                        if f.extension in ('mm', ):
+                                c.flags='d'
+                                return "freemind", c
+                        if f.extension in ('graphml', ):
+                                c.flags='d'
+                                return "yEd", c
+                        if f.extension in ('doc', 'xls', 'ppt', 'pptx'):
+                                c.flags='d'
+                                return self.either(c, 'ooffice', 'libreoffice', 'soffice')
+
                 if f.mimetype is not None:
                         if INTERPRETED_LANGUAGES.match(f.mimetype):
                                 return self.either(c, 'edit_or_run')
 
                 if f.container:
-                        return self.either(c, 'aunpack')
+                        return "aunpack", c
 
                 if f.image:
                         if c.mode in (11, 12, 13, 14):
                                 return self.either(c, 'set_bg_with_feh')
                         else:
-                                return self.either(c, 'sxiv', 'feh', 'eog', 'mirage')
+                                return "feh", c
 
                 if f.document or f.filetype.startswith('text') or f.size == 0:
                         return self.either(c, 'editor')
 
                 # decide based on mime type with the help of mimeo
-                return "mimeo", c
+                return "mimeopen", c
 
 CustomApplications.generic('wine', deps=['X'])
 
 # Add those which should only run in X AND should be detached/forked here:
-CustomApplications.generic('opera', 'firefox', 'evince', 'llpp', 'mupdf'
-                           'gimp', 'soffice', 'ooffice', 'libreoffice',
+CustomApplications.generic('opera', 'firefox',
+                           'soffice', 'ooffice', 'libreoffice',
                            flags='d', deps=['X'])
 
 # What filetypes are recognized as scripts for interpreted languages?
