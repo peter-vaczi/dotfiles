@@ -26,5 +26,6 @@ do
     fi
 
     # put it together
-    echo "${irssiStatus}${mails}${currentTrack}${i3StatusLine}"
+    # echo "${irssiStatus}${mails}${currentTrack}${i3StatusLine}"
+    echo "${irssiStatus}${mails}${i3StatusLine}"
 done
