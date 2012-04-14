@@ -27,12 +27,14 @@ bar {
     tray_output LVDS1
 }
 
+exec --no-startup-id ~/.i3/i3status-laptop.sh | dzen2 -w 1300 -x 170 -ta r -bg '#000000'
+exec --no-startup-id parcellite
+exec --no-startup-id wicd-client --tray
+exec --no-startup-id synergyc -d ERROR -n laptop ptr.emea.nsn-net.net
 #exec --no-startup-id roxterm -e mutt
 #exec --no-startup-id roxterm -e screen -S irssi irssi
-#exec --no-startup-id skype
-exec --no-startup-id parcellite
 exec --no-startup-id firefox
-exec --no-startup-id ~/.i3/i3status-laptop.sh | dzen2 -w 1250 -x 170 -ta r -bg '#000000'
+#exec --no-startup-id skype
 
 #exec_always wmname LG3D
 #exec_always --no-startup-id xrandr --output DVI-1 --right-of DVI-0 # set the dual monitor 
