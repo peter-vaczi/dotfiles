@@ -34,3 +34,5 @@ fresh config/mutt/muttrc    --file=~/.mutt/muttrc
 # task warrior
 fresh config/taskrc    --file
 
+# gem
+fresh config/gemrc    --file
