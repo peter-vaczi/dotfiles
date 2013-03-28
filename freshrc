@@ -11,6 +11,7 @@
 fresh freshshell/fresh bin/fresh --bin
 
 # i3
-fresh config/i3/config --file=~/.i3/config
+fresh config/i3 --file=~/.i3/
+
 
 
