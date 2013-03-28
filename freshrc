@@ -30,3 +30,7 @@ fresh config/offlineimaprc --file
 fresh config/mutt/bindings  --file=~/.mutt/bindings
 fresh config/mutt/colors    --file=~/.mutt/colors
 fresh config/mutt/muttrc    --file=~/.mutt/muttrc
+
+# task warrior
+fresh config/taskrc    --file
+
