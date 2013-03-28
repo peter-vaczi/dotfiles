@@ -11,7 +11,9 @@
 fresh freshshell/fresh bin/fresh --bin
 
 # i3
-fresh config/i3 --file=~/.i3/
+fresh config/i3/config --file=~/.i3/config
 
+#emacs
+fresh config/emacs --file
 
 
