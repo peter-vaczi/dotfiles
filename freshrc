@@ -15,7 +15,11 @@ fresh config/i3/config               --file=~/.i3/config
 fresh config/i3/i3status-laptop.sh   --file=~/.i3/i3status-laptop.sh
 fresh config/i3/i3status-laptop.conf --file=~/.i3/i3status-laptop.conf
 
-#emacs
+# emacs
 fresh config/emacs --file
+
+# git
+fresh config/git/config  --file=~/.gitconfig --marker
+fresh config/git/aliases --file=~/.gitconfig --marker
 
 

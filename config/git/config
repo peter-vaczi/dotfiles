@@ -1,0 +1,8 @@
+[user]
+	email = peter.vaczi@gmail.com
+	name = Peter Vaczi
+[push]
+	default = matching
+[color]
+        ui =  auto
+        interactive = auto
