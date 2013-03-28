@@ -22,4 +22,11 @@ fresh config/emacs --file
 fresh config/git/config  --file=~/.gitconfig --marker
 fresh config/git/aliases --file=~/.gitconfig --marker
 
+# mail
+fresh config/mailcap       --file
+fresh config/msmtprc       --file
+fresh config/offlineimaprc --file
 
+fresh config/mutt/bindings  --file=~/.mutt/bindings
+fresh config/mutt/colors    --file=~/.mutt/colors
+fresh config/mutt/muttrc    --file=~/.mutt/muttrc
