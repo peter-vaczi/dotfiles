@@ -8,11 +8,12 @@
 #
 # See http://freshshell.com/readme for documentation.
 
+# update fresh
 fresh freshshell/fresh bin/fresh --bin
 
 # i3
 fresh config/i3/config               --file=~/.i3/config
-fresh config/i3/i3status-laptop.sh   --file=~/.i3/i3status-laptop.sh
+fresh config/i3/i3status-laptop.sh   --bin=~/.i3/i3status-laptop.sh
 fresh config/i3/i3status-laptop.conf --file=~/.i3/i3status-laptop.conf
 
 # emacs
@@ -36,3 +37,9 @@ fresh config/taskrc    --file
 
 # gem
 fresh config/gemrc    --file
+
+# helper scripts
+fresh bin/vpn-on  --bin
+fresh bin/vpn-off --bin
+
+# fresh config/msmtprc.erb.asc --file=~/.msmtprc --filter="gpg | erb"
