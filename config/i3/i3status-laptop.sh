@@ -13,12 +13,6 @@ do
         mails=""
     fi
 
-    # status from irssi
-    irssiStatus=`cat ~/.irssi_status`
-    if [ "x" != "x${irssiStatus}" ]; then
-        irssiStatus="^fg(#00FF00)irssi: ${irssiStatus}^fg(#333333)^p(5;-2)^ro(2)^p()^fg()^p(5)"
-    fi
-
     # get the current mpd line
     currentTrack=`mpc current`
     if [ "x" != "x${currentTrack}" ]; then
@@ -26,6 +20,5 @@ do
     fi
 
     # put it together
-    # echo "${irssiStatus}${mails}${currentTrack}${i3StatusLine}"
-    echo "${irssiStatus}${mails}${i3StatusLine}"
+    echo "${mails}${i3StatusLine}"
 done
