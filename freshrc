@@ -41,5 +41,6 @@ fresh config/gemrc    --file
 # helper scripts
 fresh bin/vpn-on  --bin
 fresh bin/vpn-off --bin
+fresh bin/backup  --bin
 
 # fresh config/msmtprc.erb.asc --file=~/.msmtprc --filter="gpg | erb"
