@@ -1,5 +1,6 @@
 [alias]
         cm = commit --verbose
         co = checkout
-
         st = status --short --branch
+        br = branch
+
