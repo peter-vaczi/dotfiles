@@ -2,15 +2,22 @@
 
 DEAFULT_ROUTE=`ip route | grep default`
 
+echo
 echo "start vpnc..."
 sudo vpnc --username vaczi || exit 1
 
 
-
+echo
 echo "setup routes..."
 sudo ip route del default
-sudo ip route add 10.0.0.0/8 dev tun0 scope link
+sudo ip route add 10.0.0.0/8       dev tun0 scope link # mask: 255.0.0.0
+sudo ip route add 172.16.0.0/12    dev tun0 scope link # mask: 255.240.0.0
+sudo ip route add 93.183.0.0/18    dev tun0 scope link # mask: 255.255.192.0
+sudo ip route add 87.254.192.0/19  dev tun0 scope link # mask: 255.255.224.0
 sudo ip route add $DEFAULT_ROUTE
 
+
+echo
+echo "new routes: "
 ip route
 
