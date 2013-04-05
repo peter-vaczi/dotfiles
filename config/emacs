@@ -6,7 +6,7 @@
  '(case-fold-search t)
  '(column-number-mode t)
  '(comment-column 32)
- '(compilation-scroll-output t)
+ '(compilation-scroll-output 1)
  '(compilation-window-height 15)
  '(compile-command "make")
  '(completion-ignored-extensions (quote (".o" "~" ".bin" ".lbin" ".so" ".a" ".ln" ".blg" ".bbl" ".elc" ".lof" ".glo" ".idx" ".lot" ".svn/" ".hg/" ".git/" ".bzr/" "CVS/" "_darcs/" "_MTN/" ".fmt" ".tfm" ".class" ".fas" ".lib" ".mem" ".x86f" ".sparcf" ".fasl" ".ufsl" ".fsl" ".dxl" ".pfsl" ".dfsl" ".p64fsl" ".d64fsl" ".dx64fsl" ".lo" ".la" ".gmo" ".mo" ".toc" ".aux" ".cp" ".fn" ".ky" ".pg" ".tp" ".vr" ".cps" ".fns" ".kys" ".pgs" ".tps" ".vrs" ".pyc" ".pyo" ".gcda" ".gcno" ".d")))
@@ -49,6 +49,7 @@
 (require 'ido)
 (ido-mode t)
 
+;; ---------------------------------------------------------------------
 ;; ibuffer
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (autoload 'ibuffer "ibuffer" "List buffers." t)
@@ -69,13 +70,28 @@
 ;; ---------------------------------------------------------------------
 ;; some convenience features
 (fset 'yes-or-no-p 'y-or-n-p) ; stop forcing me to spell out "yes"
-(mouse-avoidance-mode 'animate)
+;(mouse-avoidance-mode 'animate)
 (setq visible-bell 0)
 (setq ring-bell-function 'ignore)
+(delete-selection-mode 1)
 
+;; ---------------------------------------------------------------------
 ; xcscope for speed up C/C++ development
 (require 'xcscope)
 (setq cscope-do-not-update-database t)
+
+;; ---------------------------------------------------------------------
+; paragraph filling
+(setq-default fill-column 100)
+; turn on auto-fill in some major modes
+(add-hook 'mail-mode-hook 'turn-on-auto-fill)
+(add-hook 'text-mode-hook 'turn-on-auto-fill)
+
+;; ---------------------------------------------------------------------
+; recognize major mode for some extra files
+(add-to-list 'auto-mode-alist '("/mutt" . mail-mode)) ; mail-mode for mail editing in mutt
+(add-to-list 'auto-mode-alist '("sconstruct" . python-mode)) ;
+(add-to-list 'auto-mode-alist '("sconscript" . python-mode)) ;
 
 ;; ---------------------------------------------------------------------
 ;; home button behaviour
@@ -128,23 +144,23 @@
 
 ;; ---------------------------------------------------------------------
 ; global key bindings
-(global-set-key (kbd "M-r") 'my-revert)
-(global-set-key (kbd "M-g") 'goto-line)
-(global-set-key (kbd "M-f") 'find-file-at-point)
-; "<f1>" used by awesome/roxterm
-(global-set-key (kbd "<f2>") 'next-error)
-(global-set-key (kbd "M-<f2>") 'previous-error)
-; "<f3>" kmacro-start-macro-or-insert-counter
-; "<f4>" kmacro-end-or-call-macro
-; "<f5>" undefined
-; "<f6>" undefined
-(global-set-key (kbd "<f7>") 'rgrep)
-(global-set-key (kbd "<f8>") 'shell)
-(global-set-key (kbd "<f9>") 'man)
-; "<f10>" menu-bar-open
-; "<f11>" used by awesome
-(global-set-key (kbd "<f12>") 'recompile)
-(global-set-key (kbd "C-a")   'dev-studio-beginning-of-line)
-(global-set-key (kbd "<home>")  'dev-studio-beginning-of-line)
-(global-set-key (kbd "C-<end>")   'end-of-buffer)
-(global-set-key (kbd "C-<home>")  'beginning-of-buffer)
+(global-set-key "\M-r" 'my-revert)
+(global-set-key "\M-g" 'goto-line)
+(global-set-key "\M-f" 'find-file-at-point)
+; [f1] used by awesome/roxterm
+(global-set-key [f2] 'next-error)
+(global-set-key [M-f2] 'previous-error)
+; [f3] kmacro-start-macro-or-insert-counter
+; [f4] kmacro-end-or-call-macro
+; [f5] undefined
+; [f6] undefined
+(global-set-key [f7] 'rgrep)
+(global-set-key [f8] 'shell)
+(global-set-key [f9] 'man)
+; [f10] menu-bar-open
+; [f11] used by awesome
+(global-set-key [f12] 'recompile)
+(global-set-key [(control a)]     'dev-studio-beginning-of-line)
+(global-set-key [(home)]          'dev-studio-beginning-of-line)
+(global-set-key [control end]   'end-of-buffer)
+(global-set-key [control home]  'beginning-of-buffer)
