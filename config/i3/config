@@ -29,7 +29,6 @@ bar {
 
 exec --no-startup-id ~/.i3/i3status-laptop.sh | dzen2 -w 1300 -x 170 -ta r -bg '#000000'
 exec --no-startup-id parcellite
-exec --no-startup-id gpg-agent --daemon
 
 exec_always --no-startup-id feh --bg-fill ~/.i3/10032012235.jpg
 

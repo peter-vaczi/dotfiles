@@ -1,0 +1,2 @@
+eval $(gpg-agent --daemon) &
+exec i3
