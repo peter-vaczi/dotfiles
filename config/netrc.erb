@@ -1,0 +1,22 @@
+machine api.heroku.com
+  login peter.vaczi@gmail.com
+  password <%= `pass show heroku.com` %>
+
+machine code.heroku.com
+  login peter.vaczi@gmail.com
+  password <%= `pass show heroku.com` %>
+
+machine mail.gmail.com
+        login peter.vaczi@gmail.com
+        password <%= `pass show gmail.com` %>
+
+machine webmail.nsn-intra.net
+        login Nsn-intra\vaczi\peter.vaczi
+        password <%= `pass show nsn/nsn-intra` %>
+
+machine sun10
+        password <%= `pass show nsn/lab` %>
+
+machine mss-nike
+        login LABHU1
+        password <%= `pass show nsn/lab` %>

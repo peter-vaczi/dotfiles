@@ -43,4 +43,7 @@ fresh bin/vpn-on  --bin
 fresh bin/vpn-off --bin
 fresh bin/backup  --bin
 
+# .netrc
+fresh config/netrc.erb --file=~/.netrc --filter="erb"
+
 # fresh config/msmtprc.erb.asc --file=~/.msmtprc --filter="gpg | erb"

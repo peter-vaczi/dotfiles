@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 if [ ! -d ~/.dotfiles ]; then
-  git clone git://github.com/neersighted/dotfiles.git ~/.dotfiles
+  git clone git://github.com/peter-vaczi/config_stuff.git ~/.dotfiles
 fi
 
 ln -sf ~/.dotfiles/freshrc ~/.freshrc
