@@ -12,12 +12,15 @@
 fresh freshshell/fresh bin/fresh --bin
 
 # bash
-fresh config/bash/bashrc       --file=~/.bashrc --marker
-fresh config/bash/config       --file=~/.bashrc --marker
-fresh config/bash/aliases      --file=~/.bashrc --marker
-fresh config/bash/prompt       --file=~/.bashrc --marker
-fresh config/bash/rvm          --file=~/.bashrc --marker
-fresh config/bash/autostart    --file=~/.bashrc --marker
+fresh config/bash/bashrc             --file=~/.bashrc --marker
+fresh config/bash/config             --file=~/.bashrc --marker
+fresh config/bash/aliases            --file=~/.bashrc --marker
+fresh config/bash/prompt             --file=~/.bashrc --marker
+fresh config/bash/rvm                --file=~/.bashrc --marker
+fresh config/bash/autostart          --file=~/.bashrc --marker
+
+# X
+fresh config/xinitrc                 --file
 
 # i3
 fresh config/i3/config               --file=~/.i3/config
@@ -25,33 +28,32 @@ fresh config/i3/i3status-laptop.sh   --bin=~/.i3/i3status-laptop.sh
 fresh config/i3/i3status-laptop.conf --file=~/.i3/i3status-laptop.conf
 
 # emacs
-fresh config/emacs --file
+fresh config/emacs                   --file
 
 # git
-fresh config/git/config  --file=~/.gitconfig --marker
-fresh config/git/aliases --file=~/.gitconfig --marker
+fresh config/git/config              --file=~/.gitconfig --marker
+fresh config/git/aliases             --file=~/.gitconfig --marker
 
 # mail
-fresh config/mailcap       --file
-fresh config/msmtprc       --file
-fresh config/offlineimaprc --file
+fresh config/mailcap                 --file
+fresh config/msmtprc                 --file
+fresh config/offlineimaprc           --file
 
-fresh config/mutt/bindings  --file=~/.mutt/bindings
-fresh config/mutt/colors    --file=~/.mutt/colors
-fresh config/mutt/muttrc    --file=~/.mutt/muttrc
+fresh config/mutt/bindings           --file=~/.mutt/bindings
+fresh config/mutt/colors             --file=~/.mutt/colors
+fresh config/mutt/muttrc             --file=~/.mutt/muttrc
 
 # task warrior
-fresh config/taskrc    --file
+fresh config/taskrc                  --file
 
 # gem
-fresh config/gemrc    --file
+fresh config/gemrc                   --file
 
 # helper scripts
-fresh bin/vpn-on  --bin
-fresh bin/vpn-off --bin
-fresh bin/backup  --bin
+fresh bin/vpn-on                     --bin
+fresh bin/vpn-off                    --bin
+fresh bin/backup                     --bin
 
-# .netrc
-fresh config/netrc.erb --file=~/.netrc --filter="erb"
+# netrc
+fresh config/netrc.erb               --file=~/.netrc    --filter="erb"
 
-# fresh config/msmtprc.erb.asc --file=~/.msmtprc --filter="gpg | erb"
