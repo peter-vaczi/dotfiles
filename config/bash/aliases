@@ -1,0 +1,8 @@
+alias less='less -N'
+alias ssh='ssh -Y'
+alias ls='ls --color=auto'
+alias ll='ls -l'
+alias diff=colordiff
+
+# fuck the typos
+alias gti=git

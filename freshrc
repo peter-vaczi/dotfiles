@@ -11,6 +11,13 @@
 # update fresh
 fresh freshshell/fresh bin/fresh --bin
 
+# bash
+fresh config/bash/bashrc       --file=~/.bashrc --marker
+fresh config/bash/config       --file=~/.bashrc --marker
+fresh config/bash/aliases      --file=~/.bashrc --marker
+fresh config/bash/prompt       --file=~/.bashrc --marker
+fresh config/bash/autostart    --file=~/.bashrc --marker
+
 # i3
 fresh config/i3/config               --file=~/.i3/config
 fresh config/i3/i3status-laptop.sh   --bin=~/.i3/i3status-laptop.sh
