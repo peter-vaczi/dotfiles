@@ -23,7 +23,7 @@ fresh config/bash/autostart          --file=~/.bashrc --marker
 fresh config/xinitrc                 --file
 
 # i3
-fresh config/i3/config               --file=~/.i3/config
+fresh config/i3/config.erb           --file=~/.i3/config               --filter="erb"
 fresh config/i3/i3status-laptop.sh   --bin=~/.i3/i3status-laptop.sh
 fresh config/i3/i3status-laptop.conf --file=~/.i3/i3status-laptop.conf
 
