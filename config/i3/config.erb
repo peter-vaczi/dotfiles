@@ -19,12 +19,12 @@ bar {
     position top
     #output LVDS1
     tray_output LVDS1
-    font pango:Source Code Pro 10
+    font pango:Source Code Pro 12
     workspace_buttons yes
     colors {
         background #000000
         statusline #ffffff
-        separator #666666
+        separator #888888
 
         focused_workspace  #4c7899 #285577 #ffffff
         active_workspace   #333333 #5f676a #ffffff
@@ -35,7 +35,6 @@ bar {
 
 ######## startup  ####################################################
 
-#exec --no-startup-id ~/.i3/i3status-laptop.sh | dzen2 -w 1300 -x 170 -ta r -bg '#000000'
 exec --no-startup-id parcellite
 
 exec_always --no-startup-id feh --bg-fill ~/.i3/10032012235.jpg
@@ -47,7 +46,6 @@ new_float  1pixel
 hide_edge_borders both
 
 font pango:Source Code Pro 12
-#font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 
 # colors
 # class                 border  backgr. text
