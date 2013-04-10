@@ -16,6 +16,7 @@ fresh config/bash/bashrc       --file=~/.bashrc --marker
 fresh config/bash/config       --file=~/.bashrc --marker
 fresh config/bash/aliases      --file=~/.bashrc --marker
 fresh config/bash/prompt       --file=~/.bashrc --marker
+fresh config/bash/rvm          --file=~/.bashrc --marker
 fresh config/bash/autostart    --file=~/.bashrc --marker
 
 # i3

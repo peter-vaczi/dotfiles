@@ -2,3 +2,5 @@
 export EDITOR="emacs"
 export TERMINAL="roxterm"
 export LOCKER="i3lock"
+
+export PATH=${HOME}/bin:${PATH}
