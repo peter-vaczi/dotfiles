@@ -1,14 +1,14 @@
 machine api.heroku.com
-  login peter.vaczi@gmail.com
+  login    <%= `pass show google/email` %>
   password <%= `pass show heroku.com` %>
 
 machine code.heroku.com
-  login peter.vaczi@gmail.com
+  login    <%= `pass show google/email` %>
   password <%= `pass show heroku.com` %>
 
 machine mail.gmail.com
-        login peter.vaczi@gmail.com
-        password <%= `pass show gmail.com` %>
+        login    <%= `pass show google/email` %>
+        password <%= `pass show google/password` %>
 
 machine webmail.nsn-intra.net
         login Nsn-intra\vaczi\peter.vaczi

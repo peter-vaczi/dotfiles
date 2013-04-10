@@ -9,7 +9,7 @@ tls_certcheck off
 account nsn
 host mail.emea.nsn-intra.net
 port 25
-from peter.vaczi@nsn.com
+from <%= `pass show nsn/email`%>
 auth off
 tls off
 
