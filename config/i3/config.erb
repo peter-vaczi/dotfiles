@@ -1,25 +1,53 @@
 set $mod Mod4
 
-# font for window titles. ISO 10646 = Unicode
-font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+
+######## general  ####################################################
+force_focus_wrapping yes
+focus_follows_mouse yes
+workspace_auto_back_and_forth yes
+
+workspace_layout tabbed
+default_orientation horizontal
 
 floating_modifier $mod
-workspace_layout tabbed
-default_orientation vertical
-new_window 1pixel
 
-# autostart some stuff
+######## statusbar ###################################################
 bar {
-    output LVDS1
+    status_command i3status -c ~/.i3/i3status-laptop.conf
+    i3bar_command  i3bar
+    mode dock
     position top
-    workspace_buttons yes
+    #output LVDS1
     tray_output LVDS1
+    font pango:Source Code Pro 10
+    workspace_buttons yes
+    colors {
+        background #000000
+        statusline #ffffff
+        separator #666666
+
+        focused_workspace  #4c7899 #285577 #ffffff
+        active_workspace   #333333 #5f676a #ffffff
+        inactive_workspace #333333 #222222 #888888
+        urgent_workspace   #2f343a #900000 #ffffff
+    }
 }
 
-exec --no-startup-id ~/.i3/i3status-laptop.sh | dzen2 -w 1300 -x 170 -ta r -bg '#000000'
+######## startup  ####################################################
+
+#exec --no-startup-id ~/.i3/i3status-laptop.sh | dzen2 -w 1300 -x 170 -ta r -bg '#000000'
 exec --no-startup-id parcellite
 
 exec_always --no-startup-id feh --bg-fill ~/.i3/10032012235.jpg
+
+######## look and feel ###############################################
+
+new_window 1pixel
+new_float  1pixel
+hide_edge_borders both
+
+font pango:Source Code Pro 12
+#font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 
 # colors
 # class                 border  backgr. text
@@ -28,25 +56,9 @@ client.focused_inactive #333333 #5f676a #ffffff
 client.unfocused        #333333 #222222 #888888
 client.urgent           #2f343a #900000 #ffffff
 
-# assign workspaces to screens
-workspace 1 output LVDS1
-workspace 2 output LVDS1
-workspace 3 output LVDS1
-workspace 4 output LVDS1
-workspace 5 output LVDS1
-workspace 6 output LVDS1
-workspace 7 output LVDS1
-workspace 8 output LVDS1
-workspace 9 output LVDS1
-workspace 10 output LVDS1
+######## keybindings #################################################
 
-# assign applications to workspaces
-assign [class="Skype"] 1
-assign [class="Firefox"] 2
-assign [class="Chromium-browser"] 2
-
-
-#################################################################
+# lock screen
 bindsym $mod+Ctrl+l exec <%= ENV['LOCKER'] %>
 
 # start a terminal
@@ -114,17 +126,17 @@ bindsym $mod+0 workspace 10
 bindsym $mod+Prior workspace prev
 bindsym $mod+Next workspace next
 
-# move focused container to workspace
-bindsym $mod+Shift+exclam move workspace 1
-bindsym $mod+Shift+at move workspace 2
-bindsym $mod+Shift+numbersign move workspace 3
-bindsym $mod+Shift+dollar move workspace 4
-bindsym $mod+Shift+percent move workspace 5
-bindsym $mod+Shift+asciicircum move workspace 6
-bindsym $mod+Shift+ampersand move workspace 7
-bindsym $mod+Shift+asterisk move workspace 8
-bindsym $mod+Shift+parenleft move workspace 9
-bindsym $mod+Shift+parenright move workspace 10
+# Move the focused container to workspace.
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
 
 # audio controls
 bindsym XF86AudioMute        exec mpc volume 0
