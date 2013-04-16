@@ -1,4 +1,4 @@
-alias less='less -N'
+alias less='less -NFRSX'
 alias ssh='ssh -Y'
 alias ls='ls --color=auto'
 alias ll='ls -l'
