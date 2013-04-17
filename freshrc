@@ -56,3 +56,5 @@ fresh bin/backup                     --bin
 # netrc
 fresh config/netrc.erb               --file=~/.netrc    --filter="erb"
 
+# clipit
+fresh config/clipitrc                --file=~/.config/clipit/clipitrc
