@@ -32,6 +32,7 @@ fresh config/emacs                   --file
 # git
 fresh config/git/config.erb          --file=~/.gitconfig --marker --filter="erb"
 fresh config/git/aliases             --file=~/.gitconfig --marker
+fresh config/git/merge               --file=~/.gitconfig --marker
 
 # mail
 fresh config/mailcap                 --file
