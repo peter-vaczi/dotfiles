@@ -99,6 +99,12 @@
   (interactive "p")
   (if (and (looking-at "^") (= arg 1)) (skip-chars-forward " \t") (move-beginning-of-line arg)))
 
+
+;; ---------------------------------------------------------------------
+;; windmove key bindings (shift-arrow)
+(when (fboundp 'windmove-default-keybindings)
+  (windmove-default-keybindings))
+
 ;; ---------------------------------------------------------------------
 ;; c++ mode
 
