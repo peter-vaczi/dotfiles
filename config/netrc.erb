@@ -1,22 +1,22 @@
 machine api.heroku.com
-  login    <%= `pass show google/email` %>
-  password <%= `pass show heroku.com` %>
+  login    <%= `pass show google/email`.strip %>
+  password <%= `pass show heroku.com`.strip %>
 
 machine code.heroku.com
-  login    <%= `pass show google/email` %>
-  password <%= `pass show heroku.com` %>
+  login    <%= `pass show google/email`.strip %>
+  password <%= `pass show heroku.com`.strip %>
 
 machine mail.gmail.com
-        login    <%= `pass show google/email` %>
-        password <%= `pass show google/password` %>
+        login    <%= `pass show google/email`.strip %>
+        password <%= `pass show google/password`.strip %>
 
 machine webmail.nsn-intra.net
         login Nsn-intra\vaczi\peter.vaczi
-        password <%= `pass show nsn/nsn-intra` %>
+        password <%= `pass show nsn/nsn-intra`.strip %>
 
 machine sun10
-        password <%= `pass show nsn/lab` %>
+        password <%= `pass show nsn/lab`.strip %>
 
 machine mss-nike
         login LABHU1
-        password <%= `pass show nsn/lab` %>
+        password <%= `pass show nsn/lab`.strip %>

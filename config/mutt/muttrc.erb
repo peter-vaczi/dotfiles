@@ -17,13 +17,13 @@ source ~/.mutt/mailboxes
 # smtp
 set use_from = yes
 set envelope_from = "yes"
-set from="<%= `pass show nsn/email` %>"
+set from="<%= `pass show nsn/email`.strip %>"
 set realname="Peter Vaczi"
 set copy                                  # Keep copies of outgoing mail...
 set record="+Sent"                    # ... and it gets saved in +nsn/Sent.
 
 set postponed="+Drafts"
-my_hdr From: Peter Vaczi <<%= `pass show nsn/email` %>>
+my_hdr From: Peter Vaczi <<%= `pass show nsn/email`.strip %>>
 set sendmail="/usr/bin/msmtp -a nsn"
 
 send-hook 'nsn/' "set mime_forward signature='-ptr-'"
