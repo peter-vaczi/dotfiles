@@ -36,7 +36,7 @@ fresh config/git/merge               --file=~/.gitconfig --marker
 
 # mail
 fresh config/mailcap                 --file
-fresh config/msmtprc.erb             --file --filter="erb"
+fresh config/msmtprc.erb             --file=~/.msmtprc  --filter="erb"
 fresh config/offlineimaprc           --file
 
 fresh config/mutt/bindings           --file=~/.mutt/bindings
