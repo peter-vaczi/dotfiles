@@ -57,8 +57,8 @@ fresh bin/backup                     --bin
 # netrc
 fresh config/netrc.erb               --file=~/.netrc    --filter="erb"
 
-# clipit
-fresh config/clipitrc                --file=~/.config/clipit/clipitrc
+# copyq
+fresh config/copyq.conf              --file=~/.config/copyq/copyq.conf
 
 # dwb
 fresh config/dwb/keys                --file=~/.config/dwb/keys
