@@ -1,10 +1,11 @@
 #!/bin/bash
 
+USERNAME=${1:-vaczi}
 DEAFULT_ROUTE=`ip route | grep default`
 
 echo
 echo "start vpnc..."
-sudo vpnc --username vaczi || exit 1
+sudo vpnc --username ${USERNAME} || exit 1
 
 
 echo
