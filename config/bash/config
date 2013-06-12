@@ -4,3 +4,5 @@ export TERMINAL="roxterm"
 export LOCKER="i3lock -i ~/.i3/locked-door.png -t -c 000000"
 
 export PATH=${HOME}/bin:${PATH}
+
+source ~/.computer_type

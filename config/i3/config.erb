@@ -12,6 +12,7 @@ default_orientation horizontal
 floating_modifier $mod
 
 ######## statusbar ###################################################
+<% if ENV['COMPUTER'] == "laptop" %>
 bar {
     status_command i3status -c ~/.i3/i3status-laptop.conf
     i3bar_command  i3bar
@@ -32,12 +33,67 @@ bar {
         urgent_workspace   #2f343a #900000 #ffffff
     }
 }
+<% end %>
+<% if ENV['COMPUTER'] == "desktop" %>
+bar {
+    output DVI-0
+    status_command i3status -c ~/.i3/i3status-desktop-1.conf
+    i3bar_command  i3bar
+    mode dock
+    position top
+    tray_output none
+    font pango:Source Code Pro 12
+    workspace_buttons yes
+    colors {
+        background #000000
+        statusline #ffffff
+        separator #888888
+
+        focused_workspace  #4c7899 #285577 #ffffff
+        active_workspace   #333333 #5f676a #ffffff
+        inactive_workspace #333333 #222222 #888888
+        urgent_workspace   #2f343a #900000 #ffffff
+    }
+}
+bar {
+    output DVI-1
+    tray_output DVI-1
+    font pango:Source Code Pro 12
+    workspace_buttons yes
+    colors {
+        background #000000
+        statusline #ffffff
+        separator #888888
+
+        focused_workspace  #4c7899 #285577 #ffffff
+        active_workspace   #333333 #5f676a #ffffff
+        inactive_workspace #333333 #222222 #888888
+        urgent_workspace   #2f343a #900000 #ffffff
+    }
+}
+<% end %>
 
 ######## startup  ####################################################
 
 exec --no-startup-id copyq
+exec_always --no-startup-id feh --bg-fill ~/.i3/shadow.jpg
 
-exec_always --no-startup-id feh --bg-fill ~/.i3/10032012235.jpg
+<% if ENV['COMPUTER'] == "desktop" %>
+   # set the dual monitor 
+   exec_always --no-startup-id xrandr --output DVI-1 --right-of DVI-0 
+
+   # assign workspaces to screens
+   workspace 1 output DVI-0
+   workspace 2 output DVI-0
+   workspace 3 output DVI-0
+   workspace 4 output DVI-0
+   workspace 5 output DVI-0
+   workspace 6 output DVI-1
+   workspace 7 output DVI-1
+   workspace 8 output DVI-1
+   workspace 9 output DVI-1
+   workspace 10 output DVI-1
+<% end %>
 
 ######## look and feel ###############################################
 
