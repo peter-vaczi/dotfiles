@@ -1,0 +1,103 @@
+apt-get install bluez
+
+cat > /etc/init/bluez.conf <<EOF
+# bluez - bluetooth daemon
+
+description     "bluetooth daemon"
+
+start on started dbus
+stop on stopping dbus
+
+env UART_CONF=/etc/bluetooth/uart
+env RFCOMM_CONF=/etc/bluetooth/rfcomm.conf
+
+expect fork
+respawn
+
+exec /usr/sbin/bluetoothd
+
+post-start script
+           [ "$VERBOSE" = no ] && redirect='>/dev/null 2>&1' || redirect=
+
+           # start_uarts()
+           if [ -x /usr/sbin/hciattach ] && [ -f $UART_CONF ];
+           then
+                grep -v '^#' $UART_CONF | while read i; do
+                       eval "/usr/sbin/hciattach $i $redirect" || :
+                            done
+                            fi
+
+                            # start_rfcomm()
+                            if [ -x /usr/bin/rfcomm ] && [ -f $RFCOMM_CONF ] ;
+                            then
+                                # rfcomm must always succeed for now: users
+                                  # may not yet have an rfcomm-enabled kernel
+                                    eval "/usr/bin/rfcomm -f $RFCOMM_CONF bind all $redirect" || :
+                                    fi
+end script
+
+post-stop script
+          # stop_uarts()
+          logger -t bluez "Stopping uarts"
+          killall hciattach >/dev/null 2>&1 || :
+
+          # stop_rfcomm()
+          logger -t bluez "Stopping rfcomm"
+          if [ -x /usr/bin/rfcomm ];
+          then
+                eval "/usr/bin/rfcomm unbind all $redirect" || :
+                fi
+end script
+
+EOF
+
+
+pi@raspbmc:~$ hciconfig 
+hci0:     Type: BR/EDR  Bus: USB
+          BD Address: 00:1F:81:00:08:30  ACL MTU: 1021:4  SCO MTU: 180:1
+          UP RUNNING 
+          RX bytes:517 acl:0 sco:0 events:22 errors:0
+          TX bytes:95 acl:0 sco:0 commands:22 errors:1
+
+pi@raspbmc:~$ hcitool scan
+Scanning ...
+         DC:2C:26:AF:B2:9E      Bluetooth Wireless Keyboard
+
+
+
+apt-get install bluez-compat
+
+====================================
+Then:
+cd /etc
+nano btkeyboard
+In nano type:
+
+#!/bin/sh
+while (sleep 10)
+do
+sudo hidd --connect aa:bb:cc:dd:ee:ff > /dev/null 2>&1
+done
+When you are finished write and quit
+
+Then make the script executable:
+
+chmod 755 btkeyboard
+=====================================
+cd /etc/init.d
+nano bt
+In nano type the the following:
+
+#!/bin/sh
+/etc/btkeyboard &
+exit 0
+
+When you are finished write and quit.
+Then make the script executable:
+
+chmod 755 btkeyboard
+=====================================
+Run the command:
+
+update-rc.d bt start 20 2 3 4 5.stop 20 0 6
+
