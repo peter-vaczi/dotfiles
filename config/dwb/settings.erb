@@ -1,6 +1,11 @@
 [default]
+<% if ENV['COMPUTER'] == "desktop"%>
 proxy=true
 proxy-url=localhost:8080
+<% else %>
+proxy=false
+proxy-url=10.114.1.10:8080
+<% end %>
 widget-packing=twds
 download-directory=/home/ptr/download/
 javascript-can-access-clipboard=true

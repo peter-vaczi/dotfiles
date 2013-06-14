@@ -66,4 +66,4 @@ fresh config/copyq.conf              --file=~/.config/copyq/copyq.conf
 # dwb
 fresh config/dwb/keys                --file=~/.config/dwb/keys
 fresh config/dwb/searchengines       --file=~/.config/dwb/searchengines
-fresh config/dwb/settings            --file=~/.config/dwb/settings
+fresh config/dwb/settings.erb        --file=~/.config/dwb/settings --filter="erb"
