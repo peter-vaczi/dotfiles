@@ -4,8 +4,8 @@ text/calendar; cal2task %s
 
 image/*; feh %s
 
-application/vnd.ms-excel;      ooffice %s
-application/vnd.ms-powerpoint; ooffice %s
+application/vnd.ms-excel;      loffice %s
+application/vnd.ms-powerpoint; loffice %s
 application/msword;            antiword %s | less
 
 application/pdf;               llpp %s
