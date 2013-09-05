@@ -46,6 +46,8 @@ fresh config/imapfilter.config.lua.erb --file=~/.imapfilter/config.lua  --filter
 fresh config/mutt/bindings           --file=~/.mutt/bindings
 fresh config/mutt/colors             --file=~/.mutt/colors
 fresh config/mutt/muttrc.erb         --file=~/.mutt/muttrc --filter="erb"
+fresh config/mutt/ldap_query.erb     --bin=~/.mutt/ldap_query --filter="erb"
+fresh config/ldappasswd.erb          --file=~/.ldappasswd --filter="erb"
 
 # task warrior
 fresh config/taskrc                  --file

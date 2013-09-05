@@ -30,12 +30,9 @@ send-hook 'nsn/' "set mime_forward signature='-ptr-'"
 
 #
 # alias handling
+# use the ldap directory only
 #
-#set alias_file=~/.mutt/aliases
-#source ~/.mutt/aliases
-#set query_command="abook --mutt-query '%s'"
-set query_command="~/.mutt/getAddresses.py '%s'"
-macro index,pager A "<pipe-message>abook --add-email-quiet<return>" "add the sender address to abook"
+set query_command="~/.mutt/ldap_query '%s'"
 
 #
 # general stuff
