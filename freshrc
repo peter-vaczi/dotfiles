@@ -25,7 +25,6 @@ fresh config/xinitrc                 --file
 # i3
 fresh config/i3/config.erb              --file=~/.i3/config               --filter="erb"
 fresh config/i3/i3status-laptop.conf    --file=~/.i3/i3status-laptop.conf
-fresh config/i3/i3status-desktop-1.conf --file=~/.i3/i3status-desktop-1.conf
 fresh config/i3/locked-door.jpg         --file=~/.i3/locked-door.jpg # convert locked-door.jpg -scale 1280x1024\! locked-door.png
 fresh config/i3/shadow.jpg              --file=~/.i3/shadow.jpg
 fresh config/i3/statusbar-conky.conf    --file=~/.i3/statusbar-conky.conf
