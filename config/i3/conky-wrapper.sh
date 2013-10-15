@@ -10,4 +10,4 @@ echo '['
 echo '[],'
 
 # Now send blocks with information forever:
-exec conky -c ~/.i3/statusbar-conky.conf
+exec conky -c ${1}

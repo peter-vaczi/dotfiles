@@ -14,7 +14,7 @@ floating_modifier $mod
 ######## statusbar ###################################################
 <% if ENV['COMPUTER'] == "laptop" %>
 bar {
-    status_command i3status -c ~/.i3/i3status-laptop.conf
+    status_command ~/.i3/conky-wrapper.sh ~/.i3/statusbar-conky-laptop.conf
     i3bar_command  i3bar
     mode dock
     position top
@@ -37,7 +37,7 @@ bar {
 <% if ENV['COMPUTER'] == "desktop" %>
 bar {
     output DVI-0
-    status_command ~/.i3/conky-wrapper.sh
+    status_command ~/.i3/conky-wrapper.sh ~/.i3/statusbar-conky.conf
     i3bar_command  i3bar
     mode dock
     position top
