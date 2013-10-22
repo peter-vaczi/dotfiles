@@ -14,6 +14,7 @@ fresh freshshell/fresh bin/fresh --bin
 # bash
 fresh config/bash/bashrc             --file=~/.bashrc --marker
 fresh config/bash/config             --file=~/.bashrc --marker
+fresh config/bash/functions          --file=~/.bashrc --marker
 fresh config/bash/aliases            --file=~/.bashrc --marker
 fresh config/bash/prompt             --file=~/.bashrc --marker
 fresh config/bash/rvm                --file=~/.bashrc --marker
