@@ -29,7 +29,7 @@ remotehost = webmail.nsn-intra.net
 remoteport = 993
 remoteuser = Nsn-intra\vaczi\peter.vaczi
 ssl = yes
-cert_fingerprint = 96b110b74507cd37754cd16ebb1bc65f03c0c67b
+cert_fingerprint = a637adaae8db9901792f9331df593b2cbecde74e
 reference = Inbox
 #folderfilter = lambda foldername: foldername in ['INBOX', 'INBOX.save']
 
