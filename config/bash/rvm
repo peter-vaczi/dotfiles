@@ -1,4 +1,4 @@
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+#[[ -s "/usr/local/rvm/scripts/rvm" ]] && source "/usr/local/rvm/scripts/rvm"
 
-export PATH=$PATH:$HOME/.rvm/bin 
+#export PATH=$PATH:$HOME/.rvm/bin 
 
