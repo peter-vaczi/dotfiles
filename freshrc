@@ -14,6 +14,7 @@ fresh freshshell/fresh bin/fresh --bin
 # bash
 fresh config/bash/bashrc             --file=~/.bashrc --marker
 fresh config/bash/config             --file=~/.bashrc --marker
+fresh config/bash/functions          --file=~/.bashrc --marker
 fresh config/bash/aliases            --file=~/.bashrc --marker
 fresh config/bash/prompt             --file=~/.bashrc --marker
 fresh config/bash/rvm                --file=~/.bashrc --marker
@@ -23,12 +24,12 @@ fresh config/bash/autostart          --file=~/.bashrc --marker
 fresh config/xinitrc                 --file
 
 # i3
-fresh config/i3/config.erb              --file=~/.i3/config               --filter="erb"
-fresh config/i3/i3status-laptop.conf    --file=~/.i3/i3status-laptop.conf
-fresh config/i3/locked-door.jpg         --file=~/.i3/locked-door.jpg # convert locked-door.jpg -scale 1280x1024\! locked-door.png
-fresh config/i3/shadow.jpg              --file=~/.i3/shadow.jpg
-fresh config/i3/statusbar-conky.conf    --file=~/.i3/statusbar-conky.conf
-fresh config/i3/conky-wrapper.sh        --bin=~/.i3/conky-wrapper.sh
+fresh config/i3/config.erb                  --file=~/.i3/config               --filter="erb"
+fresh config/i3/locked-door.jpg             --file=~/.i3/locked-door.jpg # convert locked-door.jpg -scale 1280x1024\! locked-door.png
+fresh config/i3/shadow.jpg                  --file=~/.i3/shadow.jpg
+fresh config/i3/statusbar-conky.conf        --file=~/.i3/statusbar-conky.conf
+fresh config/i3/statusbar-conky-laptop.conf --file=~/.i3/statusbar-conky-laptop.conf
+fresh config/i3/conky-wrapper.sh            --bin=~/.i3/conky-wrapper.sh
 
 # emacs
 fresh config/emacs                   --file

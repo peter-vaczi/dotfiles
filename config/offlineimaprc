@@ -14,9 +14,8 @@ ignore-readonly = no
 localrepository = LocalNsn
 remoterepository = RemoteNsn
 status_backend = sqlite
-
-# autorefresh = 10
-# quick = 10
+autorefresh = 1
+# presynchook = imapfilter
 
 [Repository LocalNsn]
 type = Maildir
