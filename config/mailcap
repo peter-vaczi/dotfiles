@@ -1,9 +1,7 @@
 # gui browser if $DISPLAY is set
-text/html; chromium %s; test=test -n "$DISPLAY"; nametemplate=%s.html      
+text/html; firefox %s; test=test -n "$DISPLAY"; nametemplate=%s.html      
 # text browser otherwise
-text/html; w3m -v -F -T text/html %s; nametemplate=%s.html; needsterminal  
-# autoview
-text/html; elinks --dump %s ; nametemplate=%s.html; copiousoutput          
+text/html; w3m -I %{charset} -T text/html -dump; copiousoutput
 
 text/plain;    less %s
 text/calendar; cal2task %s
