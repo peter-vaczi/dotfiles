@@ -154,6 +154,10 @@
             (hs-minor-mode t)))
 
 ;; ---------------------------------------------------------------------
+;; git
+(require 'magit)
+
+;; ---------------------------------------------------------------------
 ; global key bindings
 (global-set-key "\M-r" 'my-revert)
 (global-set-key "\M-g" 'goto-line)
