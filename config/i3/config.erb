@@ -79,6 +79,10 @@ bar {
 exec --no-startup-id copyq
 exec_always --no-startup-id feh --bg-fill ~/.i3/shadow.jpg
 
+<% if ENV['COMPUTER'] == "laptop" %>
+   exec_always --no-startup-id xmodmap -e "keysym Menu = Super_R"
+<% end %>
+
 <% if ENV['COMPUTER'] == "desktop" %>
    # set the dual monitor 
    exec_always --no-startup-id xrandr --output DP-2 --right-of DP-1 
