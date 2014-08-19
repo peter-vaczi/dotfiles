@@ -83,12 +83,12 @@
 ; paragraph filling
 (setq-default fill-column 100)
 ; turn on auto-fill in some major modes
-(add-hook 'mail-mode-hook 'turn-on-auto-fill)
+(add-hook 'message-mode-hook 'turn-on-auto-fill)
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 
 ;; ---------------------------------------------------------------------
 ; recognize major mode for some extra files
-(add-to-list 'auto-mode-alist '("/mutt" . mail-mode)) ; mail-mode for mail editing in mutt
+(add-to-list 'auto-mode-alist '("/mutt" . message-mode)) ; message-mode for mail editing in mutt
 (add-to-list 'auto-mode-alist '("sconstruct" . python-mode)) ;
 (add-to-list 'auto-mode-alist '("sconscript" . python-mode)) ;
 
