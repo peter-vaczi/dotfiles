@@ -1,4 +1,8 @@
-text/html;     elinks --dump %s ; copiousoutput
+# gui browser if $DISPLAY is set
+text/html; firefox %s; test=test -n "$DISPLAY"; nametemplate=%s.html      
+# text browser otherwise
+text/html; w3m -I %{charset} -T text/html -dump; copiousoutput
+
 text/plain;    less %s
 text/calendar; cal2task %s
 

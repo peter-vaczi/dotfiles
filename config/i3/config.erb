@@ -37,7 +37,7 @@ bar {
 <% if ENV['COMPUTER'] == "desktop" %>
 bar {
     output DP-1
-    status_command ~/.i3/conky-wrapper.sh
+    status_command ~/.i3/conky-wrapper.sh ~/.i3/statusbar-conky.conf
     i3bar_command  i3bar
     mode dock
     position top
@@ -205,6 +205,11 @@ bindsym XF86AudioNext        exec mpc next
 bindsym XF86AudioPlay        exec mpc toggle
 bindsym XF86AudioLowerVolume exec mpc volume -1
 bindsym XF86AudioRaiseVolume exec mpc volume +1
+
+# audio controls
+bindsym XF86Calculator    exec wireshark
+#bindsym XF86Explorer      exec mpc volume 0
+#bindsym XF86Mail          exec mpc volume 0
 
 # reload the configuration file
 bindsym $mod+Shift+C reload

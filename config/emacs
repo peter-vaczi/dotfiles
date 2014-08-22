@@ -9,7 +9,7 @@
  '(compilation-scroll-output 1)
  '(compilation-window-height 15)
  '(compile-command "make")
- '(completion-ignored-extensions (quote (".o" "~" ".bin" ".lbin" ".so" ".a" ".ln" ".blg" ".bbl" ".elc" ".lof" ".glo" ".idx" ".lot" ".svn/" ".hg/" ".git/" ".bzr/" "CVS/" "_darcs/" "_MTN/" ".fmt" ".tfm" ".class" ".fas" ".lib" ".mem" ".x86f" ".sparcf" ".fasl" ".ufsl" ".fsl" ".dxl" ".pfsl" ".dfsl" ".p64fsl" ".d64fsl" ".dx64fsl" ".lo" ".la" ".gmo" ".mo" ".toc" ".aux" ".cp" ".fn" ".ky" ".pg" ".tp" ".vr" ".cps" ".fns" ".kys" ".pgs" ".tps" ".vrs" ".pyc" ".pyo" ".gcda" ".gcno" ".d")))
+ '(completion-ignored-extensions (quote (".o" "~" ".bin" ".lbin" ".so" ".a" ".ln" ".blg" ".bbl" ".elc" ".lof" ".glo" ".idx" ".lot" ".svn/" ".hg/" ".git/" ".bzr/" "CVS/" "_darcs/" "_MTN/" ".fmt" ".tfm" ".class" ".fas" ".lib" ".mem" ".x86f" ".sparcf" ".fasl" ".ufsl" ".fsl" ".dxl" ".pfsl" ".dfsl" ".p64fsl" ".d64fsl" ".dx64fsl" ".lo" ".la" ".gmo" ".mo" ".toc" ".aux" ".cp" ".fn" ".ky" ".pg" ".tp" ".vr" ".cps" ".fns" ".kys" ".pgs" ".tps" ".vrs" ".pyc" ".pyo" ".gcda" ".gcno" ".d" ".COM" ".LNK" ".MP1" ".MP2" ".386" ".obj" ".os")))
  '(current-language-environment "English")
  '(erc-nick "ptr")
  '(erc-server "eslinuxp01.emea.nsn-net.net")
@@ -46,6 +46,10 @@
 ;; ---------------------------------------------------------------------
 ;; ido
 (require 'ido)
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
+(setq ido-ignore-extensions t)
+(setq ido-ignore-files (quote ("__lazy*")))
 (ido-mode t)
 
 ;; ---------------------------------------------------------------------
@@ -69,15 +73,9 @@
 ;; ---------------------------------------------------------------------
 ;; some convenience features
 (fset 'yes-or-no-p 'y-or-n-p) ; stop forcing me to spell out "yes"
-;(mouse-avoidance-mode 'animate)
 (setq visible-bell 0)
 (setq ring-bell-function 'ignore)
 (delete-selection-mode 1)
-
-;; ---------------------------------------------------------------------
-; xcscope for speed up C/C++ development
-(require 'xcscope)
-(setq cscope-do-not-update-database t)
 
 ;; ---------------------------------------------------------------------
 ; paragraph filling
@@ -99,14 +97,21 @@
   (interactive "p")
   (if (and (looking-at "^") (= arg 1)) (skip-chars-forward " \t") (move-beginning-of-line arg)))
 
-
 ;; ---------------------------------------------------------------------
 ;; windmove key bindings (shift-arrow)
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings))
 
 ;; ---------------------------------------------------------------------
-;; c++ mode
+;; shell-mode
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+
+;; ---------------------------------------------------------------------
+;; compilation-mode
+(add-hook 'compilation-mode-hook 'ansi-color-for-comint-mode-on)
+
+;; ---------------------------------------------------------------------
+;; c/c++ mode
 
 ; c++ mode for .h files
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
@@ -126,26 +131,31 @@
   ;(c-toggle-auto-hungry-state 1)
   )
 
-(add-hook 'c-mode-hook 'my-c++-mode-hook)
-(add-hook 'c++-mode-hook 'my-c++-mode-hook)
+(add-hook 'c-mode-common-hook 'my-c++-mode-hook)
 
 ;; remove trailing whitespaces automatically
-(add-hook 'c-mode-hook
+(add-hook 'c-mode-common-hook
           (lambda()
             (add-hook 'before-save-hook
                       'delete-trailing-whitespace nil t)))
 
-(add-hook 'c++-mode-hook
+;; show the current function's name
+(add-hook 'c-mode-common-hook 
+  (lambda ()
+    (which-function-mode t)))
+
+;; hide and show functions
+(add-hook 'c-mode-common-hook
           (lambda()
-            (add-hook 'before-save-hook
-                      'delete-trailing-whitespace nil t)))
+            (local-set-key (kbd "C-c <right>") 'hs-show-block)
+            (local-set-key (kbd "C-c <left>")  'hs-hide-block)
+            (local-set-key (kbd "C-c <up>")    'hs-hide-all)
+            (local-set-key (kbd "C-c <down>")  'hs-show-all)
+            (hs-minor-mode t)))
 
-;; ; compile
-;; (defun my-compile() (interactive)
-
-;;   (dir (read-directory-name "Base directory: "
-;;                             nil default-directory t)))
-
+;; ---------------------------------------------------------------------
+;; git
+(require 'magit)
 
 ;; ---------------------------------------------------------------------
 ; global key bindings
