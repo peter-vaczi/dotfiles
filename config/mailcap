@@ -1,7 +1,8 @@
 # gui browser if $DISPLAY is set
 text/html; firefox %s; test=test -n "$DISPLAY"; nametemplate=%s.html      
 # text browser otherwise
-text/html; w3m -I %{charset} -T text/html -dump; copiousoutput
+# text/html; w3m -I %{charset} -T text/html -dump; copiousoutput
+text/html; elinks -dump -dump-charset %{charset}; copiousoutput
 
 text/plain;    less %s
 text/calendar; cal2task %s
@@ -10,6 +11,9 @@ image/*; feh %s
 
 application/vnd.ms-excel;      loffice %s
 application/vnd.ms-powerpoint; loffice %s
+application/vnd.openxmlformats-officedocument.presentationml.presentation; loffice %s
+application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; loffice %s
+application/vnd.openxmlformats-officedocument.wordprocessingml.document; loffice %s
 application/msword;            antiword %s | less
 
 application/pdf;               llpp %s
