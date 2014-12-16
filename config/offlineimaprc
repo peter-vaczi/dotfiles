@@ -14,7 +14,7 @@ ignore-readonly = no
 localrepository = LocalNsn
 remoterepository = RemoteNsn
 status_backend = sqlite
-autorefresh = 1
+#autorefresh = 1
 presynchook = imapfilter
 
 [Repository LocalNsn]
@@ -28,7 +28,7 @@ remotehost = webmail.nsn-intra.net
 remoteport = 993
 remoteuser = Nsn-intra\vaczi\peter.vaczi
 ssl = yes
-cert_fingerprint = f66f68ff4d03512fefb0d6869c7bd605eae25135
+cert_fingerprint = f4a8f2f68d3bef0f073d20e847891e829ff1141f
 reference = Inbox
 #folderfilter = lambda foldername: foldername in ['INBOX', 'INBOX.save']
 
