@@ -9,14 +9,21 @@ text/calendar; cal2task %s
 
 image/*; feh %s
 
+application/msword;                                                        ~/.mutt/bgrun loffice %s
+application/vnd.msword;                                                    ~/.mutt/bgrun loffice %s
+application/excel;                                                         ~/.mutt/bgrun loffice %s
+application/msexcel;                                                       ~/.mutt/bgrun loffice %s
 application/vnd.ms-excel;                                                  ~/.mutt/bgrun loffice %s
+application/x-excel;                                                       ~/.mutt/bgrun loffice %s
+application/x-msexcel;                                                     ~/.mutt/bgrun loffice %s
 application/vnd.ms-powerpoint;                                             ~/.mutt/bgrun loffice %s
+application/x-mspowerpoint;                                                ~/.mutt/bgrun loffice %s
+application/ppt;                                                           ~/.mutt/bgrun loffice %s
 application/vnd.openxmlformats-officedocument.presentationml.presentation; ~/.mutt/bgrun loffice %s
 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;         ~/.mutt/bgrun loffice %s
 application/vnd.openxmlformats-officedocument.wordprocessingml.document;   ~/.mutt/bgrun loffice %s
-application/msword;            antiword %s | less
 
-application/pdf;               llpp %s
+application/pdf;               ~/.mutt/bgrun llpp %s
 
 application/x-zip-compressed;        aunpack -l %s; copiousoutput
 
