@@ -9,11 +9,11 @@ text/calendar; cal2task %s
 
 image/*; feh %s
 
-application/vnd.ms-excel;      loffice %s
-application/vnd.ms-powerpoint; loffice %s
-application/vnd.openxmlformats-officedocument.presentationml.presentation; loffice %s
-application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; loffice %s
-application/vnd.openxmlformats-officedocument.wordprocessingml.document; loffice %s
+application/vnd.ms-excel;                                                  ~/.mutt/bgrun loffice %s
+application/vnd.ms-powerpoint;                                             ~/.mutt/bgrun loffice %s
+application/vnd.openxmlformats-officedocument.presentationml.presentation; ~/.mutt/bgrun loffice %s
+application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;         ~/.mutt/bgrun loffice %s
+application/vnd.openxmlformats-officedocument.wordprocessingml.document;   ~/.mutt/bgrun loffice %s
 application/msword;            antiword %s | less
 
 application/pdf;               llpp %s

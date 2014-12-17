@@ -49,6 +49,7 @@ fresh config/mutt/bindings           --file=~/.mutt/bindings
 fresh config/mutt/colors             --file=~/.mutt/colors
 fresh config/mutt/muttrc.erb         --file=~/.mutt/muttrc --filter="erb"
 fresh config/mutt/ldap_query.erb     --bin=~/.mutt/ldap_query --filter="erb"
+fresh config/mutt/bgrun              --bin=~/.mutt/bgrun
 fresh config/ldappasswd.erb          --file=~/.ldappasswd --filter="erb"
 
 # task warrior
