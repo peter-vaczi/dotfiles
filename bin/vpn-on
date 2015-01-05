@@ -1,12 +1,16 @@
 #!/bin/bash
 
 USERNAME=${1:-vaczi}
+CERT=/etc/netctl/nosi_files/vaczi.ipa.nsn-net.net.crt
+KEY=/etc/netctl/nosi_files/vaczi.ipa.nsn-net.net.privkey.pem
+GW=nra-emea-de-muc-qa-1.remoteaccess.nsn.com
+
 DEAFULT_ROUTE=`ip route | grep default`
 
 echo
 echo "start vpnc..."
-sudo vpnc --username ${USERNAME} || exit 1
-
+#sudo vpnc --username ${USERNAME} || exit 1
+sudo openconnect -b -u ${USERNAME} -c ${CERT} -k ${KEY} ${GW} || exit 1
 
 echo
 echo "setup routes..."
