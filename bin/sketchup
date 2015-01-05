@@ -1,0 +1,1 @@
+WINEPREFIX="${HOME}/.sketchup" wine "C:\Program Files\SketchUp\SketchUp 2015\SketchUp.exe"

@@ -37,7 +37,8 @@ spam =
        nsn.INBOX:contain_subject('AXA consultation') + 
        nsn.INBOX:contain_subject('Unicredit consultation') +
        nsn.INBOX:contain_subject('Good Morning Pronto') +
-       nsn.INBOX:contain_subject('[EE LinSEE Notification]') +
+       nsn.INBOX:contain_subject('EE LinSEE Notification') +
+       nsn.INBOX:contain_subject('EE iSource Notification') 
        (nsn.INBOX:contain_subject('blog') * nsn.INBOX:contain_subject('check') )
 
 spam:delete_messages()
