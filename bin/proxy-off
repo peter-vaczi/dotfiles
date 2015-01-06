@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+sudo ln -sf /etc/tinyproxy/tinyproxy-noproxy.conf /etc/tinyproxy/tinyproxy.conf
+sudo systemctl restart tinyproxy

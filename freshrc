@@ -61,6 +61,8 @@ fresh config/gemrc                   --file
 # helper scripts
 fresh bin/vpn-on                     --bin
 fresh bin/vpn-off                    --bin
+fresh bin/proxy-on                   --bin
+fresh bin/proxy-off                  --bin
 fresh bin/backup                     --bin
 fresh bin/sketchup                   --bin
 
