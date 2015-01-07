@@ -1,7 +1,7 @@
 
 export EDITOR="emacs"
 export TERMINAL="roxterm"
-export LOCKER="i3lock -i ~/.i3/locked-door.png -t -c 000000"
+export LOCKER="i3lock -f"
 
 export PATH=${HOME}/bin:${PATH}
 export PATH="${PATH}:/opt/android-sdk/platform-tools"
