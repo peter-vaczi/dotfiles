@@ -76,8 +76,9 @@ bar {
 
 ######## startup  ####################################################
 
-exec --no-startup-id clipit
 exec_always --no-startup-id feh --bg-fill ~/.i3/shadow.jpg
+exec --no-startup-id clipit
+exec --no-startup-id qxkb
 
 <% if ENV['COMPUTER'] == "laptop" %>
    exec_always --no-startup-id xmodmap -e "keysym Menu = Super_R"

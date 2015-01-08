@@ -30,6 +30,8 @@ fresh config/i3/shadow.jpg                  --file=~/.i3/shadow.jpg
 fresh config/i3/statusbar-conky.conf        --file=~/.i3/statusbar-conky.conf
 fresh config/i3/statusbar-conky-laptop.conf --file=~/.i3/statusbar-conky-laptop.conf
 fresh config/i3/conky-wrapper.sh            --bin=~/.i3/conky-wrapper.sh
+fresh config/qxkb.cfg                       --file=~/.config/qxkb.cfg
+fresh config/clipitrc                       --file=~/.config/clipit/clipitrc
 
 # emacs
 fresh config/emacs                   --file
