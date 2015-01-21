@@ -111,6 +111,10 @@
 (add-hook 'compilation-mode-hook 'ansi-color-for-comint-mode-on)
 
 ;; ---------------------------------------------------------------------
+; antlr mode for .g4 files
+(add-to-list 'auto-mode-alist '("\\.g4\\'" . antlr-mode))
+
+;; ---------------------------------------------------------------------
 ;; c/c++ mode
 
 ; c++ mode for .h files
