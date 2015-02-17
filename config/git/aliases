@@ -3,4 +3,7 @@
         co = checkout
         st = status --short --branch
         br = branch
-
+        l  = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+        type = cat-file -t
+        dump = cat-file -p
+        
