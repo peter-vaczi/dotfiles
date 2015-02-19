@@ -3,7 +3,7 @@ export EDITOR="emacs"
 export TERMINAL="roxterm"
 export LOCKER="i3lock -f"
 
-export PATH=${HOME}/bin:${PATH}
+export PATH=${HOME}/bin:/usr/lib/colorgcc/bin/:${PATH}
 export PATH="${PATH}:/opt/android-sdk/platform-tools"
 export PATH="${PATH}:/opt/android-sdk/tools"
 
