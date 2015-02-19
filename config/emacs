@@ -24,6 +24,7 @@
  '(grep-use-null-device nil)
  '(history-delete-duplicates t)
  '(indent-tabs-mode nil)
+ '(tab-width 2)
  '(inhibit-startup-screen t)
  '(make-backup-files nil)
  '(mouse-wheel-follow-mouse t)
