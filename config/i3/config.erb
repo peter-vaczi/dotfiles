@@ -79,6 +79,7 @@ bar {
 exec_always --no-startup-id feh --bg-fill ~/.i3/shadow.jpg
 exec --no-startup-id clipit
 exec --no-startup-id qxkb
+exec --no-startup-id syndaemon -t -k -i 2 # disable touchpad clicking and scrolling during keyboard activity
 
 <% if ENV['COMPUTER'] == "laptop" %>
    exec_always --no-startup-id xmodmap -e "keysym Menu = Super_R"
