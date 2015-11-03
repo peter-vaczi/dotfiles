@@ -164,6 +164,10 @@
 (global-set-key "\M-s" 'magit-status)
 
 ;; ---------------------------------------------------------------------
+;; cmake
+(require 'cmake-mode)
+
+;; ---------------------------------------------------------------------
 ; global key bindings
 (global-set-key "\M-r" 'my-revert)
 (global-set-key "\M-g" 'goto-line)
