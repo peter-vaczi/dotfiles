@@ -6,3 +6,7 @@ alias diff=colordiff
 
 # fuck the typos
 alias gti=git
+
+# docker stuff
+alias docker-clean-images='docker rmi $(docker images | grep "^<none>" | awk "{print \$3};")'
+alias docker-clean-containers='docker rm $(docker ps -aq)'

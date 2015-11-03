@@ -8,4 +8,4 @@ fi
 
 
 # Put your fun stuff here.
-[[ -f /etc/profile ]] && . /etc/profile
+[[ -f /etc/profile && -z "$PATH" ]] && . /etc/profile
