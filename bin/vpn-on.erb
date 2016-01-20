@@ -10,8 +10,7 @@ DEAFULT_ROUTE=`ip route | grep default`
 
 echo
 echo "start vpnc..."
-#sudo vpnc --username ${USERNAME} || exit 1
-sudo openconnect -b -u ${USERNAME} -c ${CERT} -k ${KEY} ${GW} || exit 1
+sudo openconnect -b -u ${USERNAME} --certificate ${CERT} --sslkey ${KEY} --key-password <%= `pass show nsn/vpn-passphrase`.strip %> ${GW} || exit 1
 
 echo
 echo "setup routes..."

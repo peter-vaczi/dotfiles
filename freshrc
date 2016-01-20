@@ -32,6 +32,7 @@ fresh config/i3/statusbar-conky-laptop.conf --file=~/.i3/statusbar-conky-laptop.
 fresh config/i3/conky-wrapper.sh            --bin=~/.i3/conky-wrapper.sh
 fresh config/qxkb.cfg                       --file=~/.config/qxkb.cfg
 fresh config/clipitrc                       --file=~/.config/clipit/clipitrc
+fresh config/dunstrc                        --file=~/.config/dunst/dunstrc
 
 # emacs
 fresh config/emacs                   --file
@@ -61,7 +62,7 @@ fresh config/taskrc                  --file
 fresh config/gemrc                   --file
 
 # helper scripts
-fresh bin/vpn-on                     --bin
+fresh bin/vpn-on.erb                 --bin=~/bin/vpn-on --filter="erb"
 fresh bin/vpn-off                    --bin
 fresh bin/proxy-on                   --bin
 fresh bin/proxy-off                  --bin
