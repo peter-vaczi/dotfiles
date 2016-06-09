@@ -3,22 +3,24 @@
 USERNAME=${1:-vaczi}
 CERT=/etc/netctl/nosi_files/vaczi.ipa.nsn-net.net.crt
 KEY=/etc/netctl/nosi_files/vaczi.ipa.nsn-net.net.privkey.pem
+GW=nra-emea-fi-esp-vip.net.nokia.com
 #GW=nra-emea-de-muc-vip.net.nokia.com
-GW=nra-emea-de-muc-qa-1.remoteaccess.nsn.com
+#GW=nra-emea-de-muc-qa-1.remoteaccess.nsn.com
 
 DEAFULT_ROUTE=`ip route | grep default`
 
 echo
-echo "start vpnc..."
+echo "start openconnect..."
 sudo openconnect -b -u ${USERNAME} --certificate ${CERT} --sslkey ${KEY} --key-password <%= `pass show nsn/vpn-passphrase`.strip %> ${GW} || exit 1
 
 echo
 echo "setup routes..."
 sudo ip route del default
-sudo ip route add 10.0.0.0/8       dev tun0 scope link # mask: 255.0.0.0
-sudo ip route add 172.16.0.0/12    dev tun0 scope link # mask: 255.240.0.0
-sudo ip route add 93.183.0.0/18    dev tun0 scope link # mask: 255.255.192.0
-sudo ip route add 87.254.192.0/19  dev tun0 scope link # mask: 255.255.224.0
+sudo ip route add 10.0.0.0/8       dev tun0 scope link
+sudo ip route add 172.16.0.0/12    dev tun0 scope link
+sudo ip route add 93.183.0.0/18    dev tun0 scope link
+sudo ip route add 87.254.192.0/19  dev tun0 scope link
+sudo ip route add 135.0.0.0/8      dev tun0 scope link # alu intra
 sudo ip route add $DEFAULT_ROUTE
 
 

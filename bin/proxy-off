@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
 
-sudo ln -sf /etc/tinyproxy/tinyproxy-noproxy.conf /etc/tinyproxy/tinyproxy.conf
-sudo systemctl restart tinyproxy
+# delete iptables rules
+sudo iptables -t nat -D REDSOCKS 1 || exit
+sudo iptables -t nat -D REDSOCKS 1 
+sudo iptables -t nat -D OUTPUT -j REDSOCKS
+sudo iptables -t nat -X REDSOCKS

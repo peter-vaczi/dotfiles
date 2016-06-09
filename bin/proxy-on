@@ -1,4 +1,11 @@
 #!/usr/bin/env bash
 
-sudo ln -sf /etc/tinyproxy/tinyproxy-office.conf /etc/tinyproxy/tinyproxy.conf
-sudo systemctl restart tinyproxy
+# Create REDSOCKS chain
+sudo iptables -t nat -N REDSOCKS || exit
+
+#All output is using this REDSOCKS chain
+sudo iptables -t nat -A OUTPUT -j REDSOCKS
+
+# HTTP and HTTPS are redirected to port 10080 and 10443 where redsocks should listen
+sudo iptables -t nat -A REDSOCKS -p tcp --dport 80  -j REDIRECT --to-ports 10080
+sudo iptables -t nat -A REDSOCKS -p tcp --dport 443 -j REDIRECT --to-ports 10443
