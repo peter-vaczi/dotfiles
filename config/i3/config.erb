@@ -218,6 +218,7 @@ bindsym XF86MonBrightnessUp    exec  xbacklight -inc 10
 bindsym XF86Calculator    exec wireshark
 #bindsym XF86Explorer      exec mpc volume 0
 #bindsym XF86Mail          exec mpc volume 0
+bindsym XF86Display       exec xrandr --output eDP1 --off && xrandr --output eDP1 --auto
 
 # reload the configuration file
 bindsym $mod+Shift+C reload
