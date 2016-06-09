@@ -5,7 +5,7 @@ alias ll='ls -l'
 alias diff=colordiff
 
 # fuck the typos
-alias gti=git
+eval $(thefuck --alias)
 
 # docker stuff
 alias docker-clean-images='docker rmi $(docker images | grep "^<none>" | awk "{print \$3};")'
