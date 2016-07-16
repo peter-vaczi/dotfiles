@@ -1,0 +1,2 @@
+export GOPATH=~/work/golang
+export PATH=${PATH}:${GOPATH}/bin

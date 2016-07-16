@@ -18,6 +18,7 @@ fresh config/bash/functions          --file=~/.bashrc --marker
 fresh config/bash/aliases            --file=~/.bashrc --marker
 fresh config/bash/prompt             --file=~/.bashrc --marker
 fresh config/bash/chruby             --file=~/.bashrc --marker
+fresh config/bash/golang             --file=~/.bashrc --marker
 fresh config/bash/autostart          --file=~/.bashrc --marker
 
 # X
