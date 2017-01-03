@@ -1,0 +1,11 @@
+[Unit]
+Description=qxkb keyboard layout manager
+
+[Service]
+ExecStart=/usr/bin/qxkb
+Environment=XAUTHORITY=/home/ptr/.Xauthority
+Environment=DISPLAY=:0.0
+Restart=always
+
+[Install]
+WantedBy=default.target

@@ -43,6 +43,11 @@ fresh config/git/config.erb          --file=~/.gitconfig --marker --filter="erb"
 fresh config/git/aliases             --file=~/.gitconfig --marker
 fresh config/git/merge               --file=~/.gitconfig --marker
 
+# systemd services
+fresh systemd/user/clipit.service    --file=~/.config/systemd/user/clipit.service
+fresh systemd/user/qxkb.service      --file=~/.config/systemd/user/qxkb.service
+fresh systemd/user/dunst.service     --file=~/.config/systemd/user/dunst.service
+
 # mail
 fresh config/mailcap                 --file
 fresh config/msmtprc.erb             --file=~/.msmtprc  --filter="erb"

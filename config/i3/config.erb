@@ -77,9 +77,6 @@ bar {
 ######## startup  ####################################################
 
 exec_always --no-startup-id feh --bg-fill ~/.i3/shadow.jpg
-exec --no-startup-id clipit               # clipboard manager
-exec --no-startup-id qxkb                 # keyboard layout manager
-exec --no-startup-id dunst                # notification manager
 exec --no-startup-id syndaemon -t -k -i 2 # disable touchpad clicking and scrolling during keyboard activity
 
 <% if ENV['COMPUTER'] == "laptop" %>
