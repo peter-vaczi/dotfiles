@@ -50,7 +50,7 @@
   (require 'package)
   (add-to-list
    'package-archives
-   '("melpa" . "http://melpa.org/packages/")
+   '("melpa" . "http://melpa.milkbox.net/packages/")
    t)
   (package-initialize))
 
@@ -167,6 +167,20 @@
             (local-set-key (kbd "C-c <up>")    'hs-hide-all)
             (local-set-key (kbd "C-c <down>")  'hs-show-all)
             (hs-minor-mode t)))
+
+
+;; ---------------------------------------------------------------------
+;; golang
+(with-eval-after-load 'go-mode (require 'go-autocomplete))
+
+(defun my-go-mode-hook ()
+  (setq gofmt-command "goimports")                 ; use goimports instead of gofmt
+  (add-hook 'before-save-hook 'gofmt-before-save)  ; Call Gofmt before saving
+  (local-set-key (kbd "M-.") 'godef-jump)          ; Godef jump key binding
+  ;(auto-complete-mode 1)
+  )
+(add-hook 'go-mode-hook 'my-go-mode-hook)
+
 
 ;; ---------------------------------------------------------------------
 ;; git
