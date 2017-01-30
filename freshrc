@@ -74,6 +74,7 @@ fresh bin/proxy-on                   --bin
 fresh bin/proxy-off                  --bin
 fresh bin/backup                     --bin
 fresh bin/sketchup                   --bin
+fresh bin/docker-go-alpine           --bin
 
 # netrc
 fresh config/netrc.erb               --file=~/.netrc    --filter="erb"
