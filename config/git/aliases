@@ -3,6 +3,9 @@
         co = checkout
         st = status --short --branch
         br = branch
+        su = submodule update
+        sui = submodule update --init
+        suir = submodule update --init --recursive
         l  = log --all --graph --date=relative --pretty=format:'%C(bold blue)%h%C(reset) - %C(green)(%ar) %C(white)%s %C(dim white) [%an] %C(bold yellow)%d'
         type = cat-file -t
         dump = cat-file -p
