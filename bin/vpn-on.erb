@@ -11,7 +11,7 @@ DEAFULT_ROUTE=`ip route | grep default`
 
 echo
 echo "start openconnect..."
-sudo openconnect -b -u ${USERNAME} --certificate ${CERT} --sslkey ${KEY} --key-password <%= `pass show nsn/vpn-passphrase`.strip %> ${GW} || exit 1
+sudo openconnect -v -b -u ${USERNAME} --certificate ${CERT} --sslkey ${KEY} --key-password <%= `pass show nsn/vpn-passphrase`.strip %> ${GW} || exit 1
 
 while ! ip link show dev tun0; do echo "waiting for tun0..."; sleep 1; done
 sleep 2

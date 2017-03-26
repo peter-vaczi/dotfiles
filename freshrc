@@ -25,15 +25,13 @@ fresh config/bash/autostart          --file=~/.bashrc --marker
 fresh config/xinitrc                 --file
 
 # i3
-fresh config/i3/config.erb                  --file=~/.i3/config               --filter="erb"
-fresh config/i3/locked-door.jpg             --file=~/.i3/locked-door.jpg # convert locked-door.jpg -scale 1280x1024\! locked-door.png
-fresh config/i3/shadow.jpg                  --file=~/.i3/shadow.jpg
-fresh config/i3/statusbar-conky.conf        --file=~/.i3/statusbar-conky.conf
-fresh config/i3/statusbar-conky-laptop.conf --file=~/.i3/statusbar-conky-laptop.conf
-fresh config/i3/conky-wrapper.sh            --bin=~/.i3/conky-wrapper.sh
-fresh config/qxkb.cfg                       --file=~/.config/qxkb.cfg
-fresh config/clipitrc                       --file=~/.config/clipit/clipitrc
-fresh config/dunstrc                        --file=~/.config/dunst/dunstrc
+fresh config/i3/config.erb           --file=~/.i3/config               --filter="erb"
+fresh config/i3/locked-door.jpg      --file=~/.i3/locked-door.jpg # convert locked-door.jpg -scale 1280x1024\! locked-door.png
+fresh config/i3/shadow.jpg           --file=~/.i3/shadow.jpg
+fresh config/i3/statusbar.conf       --file=~/.i3/statusbar.conf
+fresh config/qxkb.cfg                --file=~/.config/qxkb.cfg
+fresh config/clipitrc                --file=~/.config/clipit/clipitrc
+fresh config/dunstrc                 --file=~/.config/dunst/dunstrc
 
 # emacs
 fresh config/emacs                   --file
@@ -82,7 +80,3 @@ fresh config/netrc.erb               --file=~/.netrc    --filter="erb"
 # copyq
 fresh config/copyq.conf              --file=~/.config/copyq/copyq.conf
 
-# dwb
-fresh config/dwb/keys                --file=~/.config/dwb/keys
-fresh config/dwb/searchengines       --file=~/.config/dwb/searchengines
-fresh config/dwb/settings.erb        --file=~/.config/dwb/settings --filter="erb"
