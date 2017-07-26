@@ -60,10 +60,10 @@ client.urgent           #2f343a #900000 #ffffff
 bindsym $mod+n exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
 
 # lock screen
-bindsym $mod+Ctrl+l exec <%= ENV['LOCKER'] %>
+bindsym $mod+Ctrl+l exec i3lock -f
 
 # start a terminal
-bindsym $mod+Return exec <%= ENV['TERMINAL'] %>
+bindsym $mod+Return exec roxterm
 
 # kill focused window
 bindsym $mod+Shift+Q kill
@@ -74,6 +74,9 @@ bindsym $mod+d exec i3-dmenu-desktop
 # screen capture
 bindcode 107 exec shutter
 #bindsym PrintScreen exec shutter
+
+# switch keyboard layout
+bindsym $mod+k exec switchkbd
 
 # change focus
 bindsym $mod+Left focus left

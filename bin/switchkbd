@@ -1,0 +1,18 @@
+#!/usr/bin/bash
+
+layout=$(setxkbmap -query | grep layout: | awk '{print $2}')
+
+case "$layout" in
+    us*)
+        newLayout="hu(qwerty)"
+        ;;
+    hu*)
+        newLayout="us"
+        ;;
+    *)
+        newLayout="us"
+esac
+
+echo "switch layout from ${layout} to ${newLayout}"
+setxkbmap "${newLayout}"
+

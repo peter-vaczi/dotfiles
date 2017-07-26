@@ -48,11 +48,9 @@
 ;; package manager (use list-packages)
 (when (>= emacs-major-version 24)
   (require 'package)
-  (add-to-list
-   'package-archives
-   '("melpa" . "http://melpa.milkbox.net/packages/")
-   t)
-  (package-initialize))
+  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+  (package-initialize)
+  )
 
 ;; ---------------------------------------------------------------------
 ;; ido
@@ -103,10 +101,10 @@
 
 ;; ---------------------------------------------------------------------
 ;; home button behaviour
-(defun dev-studio-beginning-of-line (arg)
-  "Moves to beginning-of-line, or from there to the first non-whitespace character."
+(defun dev-studio-beginning-of-line (ARG)
+  "Move to 'beginning-of-line' ARG, or from there to the first non-whitespace character."
   (interactive "p")
-  (if (and (looking-at "^") (= arg 1)) (skip-chars-forward " \t") (move-beginning-of-line arg)))
+  (if (and (looking-at "^") (= ARG 1)) (skip-chars-forward " \t") (move-beginning-of-line ARG)))
 
 ;; ---------------------------------------------------------------------
 ;; windmove key bindings (shift-arrow)
@@ -191,6 +189,13 @@
 ;; cmake
 (require 'cmake-mode)
 
+
+;; ---------------------------------------------------------------------
+;; flycheck
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode))
+
 ;; ---------------------------------------------------------------------
 ; global key bindings
 (global-set-key "\M-r" 'my-revert)
@@ -213,3 +218,6 @@
 (global-set-key [(home)]          'dev-studio-beginning-of-line)
 (global-set-key [control end]   'end-of-buffer)
 (global-set-key [control home]  'beginning-of-buffer)
+
+(provide 'emacs)
+;;; emacs ends here
