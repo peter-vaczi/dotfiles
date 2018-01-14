@@ -27,7 +27,7 @@ fresh config/xinitrc                 --file
 # i3
 fresh config/i3/config.erb           --file=~/.i3/config               --filter="erb"
 fresh config/i3/locked-door.jpg      --file=~/.i3/locked-door.jpg # convert locked-door.jpg -scale 1280x1024\! locked-door.png
-fresh config/i3/shadow.jpg           --file=~/.i3/shadow.jpg
+fresh config/i3/nice-and-clean.jpg   --file=~/.i3/bg.jpg
 fresh config/i3/statusbar.conf       --file=~/.i3/statusbar.conf
 fresh config/qxkb.cfg                --file=~/.config/qxkb.cfg
 fresh config/clipitrc                --file=~/.config/clipit/clipitrc
@@ -73,6 +73,7 @@ fresh bin/proxy-off                  --bin
 fresh bin/backup                     --bin
 fresh bin/sketchup                   --bin
 fresh bin/docker-go-alpine           --bin
+fresh bin/docker-clean-images        --bin
 fresh bin/switchkbd                  --bin
 
 # netrc

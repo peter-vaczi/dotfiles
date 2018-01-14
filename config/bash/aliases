@@ -8,5 +8,4 @@ alias diff=colordiff
 eval $(thefuck --alias)
 
 # docker stuff
-alias docker-clean-images='docker rmi $(docker images | grep "^<none>" | awk "{print \$3};")'
 alias docker-clean-containers='docker rm $(docker ps -aq)'
