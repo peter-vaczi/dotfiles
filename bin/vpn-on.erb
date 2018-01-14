@@ -3,15 +3,16 @@
 USERNAME=${1:-vaczi}
 CERT=/etc/netctl/nosi_files/vaczi.ipa.nsn-net.net.crt
 KEY=/etc/netctl/nosi_files/vaczi.ipa.nsn-net.net.privkey.pem
+SERVERCERT=--servercert sha256:306eeaecb1845bff0fefa60d35028da1a43be3146db0811655aacc188156659f
 GW=nra-emea-fi-esp-vip.net.nokia.com
 #GW=nra-emea-de-muc-vip.net.nokia.com
 #GW=nra-emea-de-muc-qa-1.remoteaccess.nsn.com
 
-DEAFULT_ROUTE=`ip route | grep default`
+DEFAULT_ROUTE=$(ip route | grep default)
 
 echo
 echo "start openconnect..."
-sudo openconnect -v -b -u ${USERNAME} --certificate ${CERT} --sslkey ${KEY} --key-password <%= `pass show nsn/vpn-passphrase`.strip %> ${GW} || exit 1
+sudo openconnect -v -b -u "${USERNAME}" --certificate ${CERT} --sslkey ${KEY} --key-password <%= `pass show nsn/vpn-passphrase`.strip %> ${SERVERCERT} ${GW} || exit 1
 
 while ! ip link show dev tun0; do echo "waiting for tun0..."; sleep 1; done
 sleep 2
@@ -24,7 +25,7 @@ sudo ip route add 172.16.0.0/12    dev tun0 scope link
 sudo ip route add 93.183.0.0/18    dev tun0 scope link
 sudo ip route add 87.254.192.0/19  dev tun0 scope link
 sudo ip route add 135.0.0.0/8      dev tun0 scope link # alu intra
-sudo ip route add $DEFAULT_ROUTE
+sudo ip route add "$DEFAULT_ROUTE"
 
 
 echo
