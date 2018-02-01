@@ -12,14 +12,14 @@
 fresh freshshell/fresh bin/fresh --bin
 
 # bash
-fresh config/bash/bashrc             --file=~/.bashrc --marker
-fresh config/bash/config             --file=~/.bashrc --marker
-fresh config/bash/functions          --file=~/.bashrc --marker
-fresh config/bash/aliases            --file=~/.bashrc --marker
-fresh config/bash/prompt             --file=~/.bashrc --marker
-fresh config/bash/chruby             --file=~/.bashrc --marker
-fresh config/bash/golang             --file=~/.bashrc --marker
-fresh config/bash/autostart          --file=~/.bashrc --marker
+# fresh config/bash/bashrc             --file=~/.bashrc --marker
+# fresh config/bash/config             --file=~/.bashrc --marker
+# fresh config/bash/functions          --file=~/.bashrc --marker
+# fresh config/bash/aliases            --file=~/.bashrc --marker
+# fresh config/bash/prompt             --file=~/.bashrc --marker
+# fresh config/bash/chruby             --file=~/.bashrc --marker
+# fresh config/bash/golang             --file=~/.bashrc --marker
+# fresh config/bash/autostart          --file=~/.bashrc --marker
 
 # X
 fresh config/xinitrc                 --file
@@ -47,17 +47,17 @@ fresh systemd/user/qxkb.service      --file=~/.config/systemd/user/qxkb.service
 fresh systemd/user/dunst.service     --file=~/.config/systemd/user/dunst.service
 
 # mail
-fresh config/mailcap                 --file
-fresh config/msmtprc.erb             --file=~/.msmtprc  --filter="erb"
-fresh config/offlineimaprc           --file
-fresh config/imapfilter.config.lua.erb --file=~/.imapfilter/config.lua  --filter="erb"
+# fresh config/mailcap                 --file
+# fresh config/msmtprc.erb             --file=~/.msmtprc  --filter="erb"
+# fresh config/offlineimaprc           --file
+# fresh config/imapfilter.config.lua.erb --file=~/.imapfilter/config.lua  --filter="erb"
 
-fresh config/mutt/bindings           --file=~/.mutt/bindings
-fresh config/mutt/colors             --file=~/.mutt/colors
-fresh config/mutt/muttrc.erb         --file=~/.mutt/muttrc --filter="erb"
-fresh config/mutt/ldap_query.erb     --bin=~/.mutt/ldap_query --filter="erb"
-fresh config/mutt/bgrun              --bin=~/.mutt/bgrun
-fresh config/ldappasswd.erb          --file=~/.ldappasswd --filter="erb"
+# fresh config/mutt/bindings           --file=~/.mutt/bindings
+# fresh config/mutt/colors             --file=~/.mutt/colors
+# fresh config/mutt/muttrc.erb         --file=~/.mutt/muttrc --filter="erb"
+# fresh config/mutt/ldap_query.erb     --bin=~/.mutt/ldap_query --filter="erb"
+# fresh config/mutt/bgrun              --bin=~/.mutt/bgrun
+# fresh config/ldappasswd.erb          --file=~/.ldappasswd --filter="erb"
 
 # task warrior
 fresh config/taskrc                  --file
