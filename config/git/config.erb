@@ -2,7 +2,9 @@
 	email = <%= `pass show nsn/email`.strip %>
 	name  = Peter Vaczi
 [push]
-	default = matching
+	default = upstream
+[fetch]
+  prune = true
 [color]
   ui =  auto
   interactive = auto

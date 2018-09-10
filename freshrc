@@ -27,7 +27,8 @@ fresh config/xinitrc                 --file
 # i3
 fresh config/i3/config.erb           --file=~/.i3/config               --filter="erb"
 fresh config/i3/locked-door.jpg      --file=~/.i3/locked-door.jpg # convert locked-door.jpg -scale 1280x1024\! locked-door.png
-fresh config/i3/nice-and-clean.jpg   --file=~/.i3/bg.jpg
+#fresh config/i3/nice-and-clean.jpg   --file=~/.i3/bg.jpg
+fresh config/i3/xsr700.jpg           --file=~/.i3/bg.jpg
 fresh config/i3/statusbar.conf       --file=~/.i3/statusbar.conf
 fresh config/qxkb.cfg                --file=~/.config/qxkb.cfg
 fresh config/clipitrc                --file=~/.config/clipit/clipitrc
@@ -66,8 +67,6 @@ fresh config/taskrc                  --file
 fresh config/gemrc                   --file
 
 # helper scripts
-fresh bin/vpn-on.erb                 --bin=~/bin/vpn-on --filter="erb"
-fresh bin/vpn-off                    --bin
 fresh bin/proxy-on                   --bin
 fresh bin/proxy-off                  --bin
 fresh bin/backup                     --bin
@@ -76,9 +75,13 @@ fresh bin/docker-go-alpine           --bin
 fresh bin/docker-clean-images        --bin
 fresh bin/switchkbd                  --bin
 
+# vpn
+fresh config/vpn/vpn-on.erb          --bin=~/bin/vpn-on --filter="erb"
+fresh config/vpn/vpn-off             --bin
+fresh config/vpn/vpn-credentials.erb --file=~/.vpn-credentials --filter="erb"
+
 # netrc
 fresh config/netrc.erb               --file=~/.netrc    --filter="erb"
 
 # copyq
 fresh config/copyq.conf              --file=~/.config/copyq/copyq.conf
-
