@@ -1,0 +1,119 @@
+{
+    "layer": "top",
+    "position": "top",
+
+    "modules-left": [
+        "sway/workspaces",
+        "sway/mode"
+    ],
+    
+    // "modules-center": [
+    //     "sway/window"
+    // ],
+
+    "modules-right": [
+        "disk",
+        "network",
+        "cpu",
+        "memory",
+        "temperature",
+        "battery",
+        "pulseaudio",
+        // "clock",
+        "tray"
+    ],
+
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "format": "{name}"
+    },
+    
+    "sway/window": {
+        "max-length": 50,
+        "tooltip": false
+    },
+    
+    "disk":{
+        "path": "/",
+        "format": " {free}"
+    },
+
+    "cpu": {
+        "format": " {usage}%  {avg_frequency}GHz"
+    },
+
+    "memory": {
+        "format": " {percentage}%"
+    },
+
+    "temperature": {
+        "critical-threshold": 80,
+        "format": "{icon} {temperatureC}°C",
+        "format-icons": ["", "", ""],
+        "on-click": "xsensors"
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "{icon} {volume}% ",
+        "format-muted": "",
+        "format-icons": {
+            "headphones": "",
+            "handsfree": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "scroll-step": 5,
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click-right": "pavucontrol"
+    },
+
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{icon} {percent}%",
+        "format-icons": ["", ""]
+    },
+
+    "battery": {
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "states": {
+            "warning": 20,
+            "critical": 10
+        },
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+
+    "clock": {
+        // "format": "{:%a %Y %b %d %R}"
+        // "format": "  {:%H:%M}  {:%Y.%m.%d}",
+        "tooltip": false
+    },
+
+    "tray": {
+		    "icon-size": 15,
+        "spacing": 10
+    },
+
+    "network": {
+        "interface": "wlan0",
+        "format": "{ifname}",
+        "format-wifi": " {essid} {ipaddr}",
+        "format-ethernet": " {ipaddr}",
+        "format-linked": "",
+        "format-disconnected": "⚠",
+        "tooltip-format-wifi": "{ifname} {essid} {ipaddr} ({signalStrength}%) ",
+        "tooltip-format-ethernet": "{ifname} {ipaddr}",
+        "tooltip-format-disconnected": "Disconnected",
+        "max-length": 50
+    }
+}

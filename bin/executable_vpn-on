@@ -1,0 +1,32 @@
+#!/bin/bash
+
+source ${HOME}/.vpn-credentials
+
+DEFAULT_ROUTE=$(ip route | grep default)
+
+echo
+echo "start openconnect..."
+token="$(2fa nokia)"
+echo -e "$NSN_PASS\n$token" |
+    sudo openconnect -v -b -u "${NSN_EMAIL}" --certificate ${CERT} --sslkey ${KEY} --key-password ${VPN_PASSPHRASE} --mtu 1401 ${GW} --passwd-on-stdin
+[[ $? != 0 ]] && exit 1
+
+while ! ip link show dev tun0; do echo "waiting for tun0..."; sleep 1; done
+sleep 2
+
+echo
+echo "setup routes..."
+sudo ip route del default
+sudo ip route add 10.0.0.0/8       dev tun0 scope link
+sudo ip route add 172.16.0.0/12    dev tun0 scope link
+sudo ip route add 93.183.0.0/18    dev tun0 scope link
+sudo ip route add 87.254.192.0/19  dev tun0 scope link
+sudo ip route add $DEFAULT_ROUTE
+
+sudo resolvectl domain tun0 ${NSN_DOMAINS}
+sudo resolvectl dns    tun0 10.158.55.13
+
+echo
+echo "new routes: "
+ip route
+

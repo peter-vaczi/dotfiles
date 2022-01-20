@@ -1,0 +1,209 @@
+######## variables  ####################################################
+set $mod Mod4
+set $term qterminal
+#set $term alacritty
+
+# Your preferred application launcher
+# Note: pass the final command to swaymsg so that the resulting window can be opened
+# on the original workspace that the command was run on.
+#set $menu dmenu_path | dmenu | xargs swaymsg exec --
+set $menu dmenu_path | rofi -show drun | xargs swaymsg exec --
+
+######## Output  ####################################################
+
+# Set the background image
+output * bg ~/.config/sway/bg.jpg fill
+
+######## input  #####################################################
+
+# You can get the names of your inputs by running: swaymsg -t get_inputs
+input type:touchpad {
+    tap enabled
+    dwt enabled # disable while typing
+    natural_scroll disabled
+}
+
+input type:touch {
+    events enabled
+    natural_scroll enabled
+}
+
+input type:keyboard {
+    xkb_layout us,hu
+    # caps lock swithes layout
+    xkb_options grp:caps_toggle,grp_led:caps
+}
+
+######## Startup    ########################################
+# This will lock your screen after 300 seconds of inactivity, then turn off
+# your displays after another 300 seconds, and turn your screens back on when
+# resumed. It will also lock your screen before your computer goes to sleep.
+exec swayidle -w \
+         timeout 1800 'swaylock --image ~/.config/sway/lock.png' \
+         timeout 3600 'swaymsg "output * dpms off"' \
+         resume 'swaymsg "output * dpms on"' \
+         before-sleep 'swaylock --image ~/.config/sway/lock.png' \
+         before-sleep 'playerctl pause'
+
+exec copyq
+
+######## general  ####################################################
+xwayland enable
+focus_wrapping yes
+focus_follows_mouse yes
+workspace_auto_back_and_forth yes
+
+workspace_layout tabbed
+default_orientation horizontal
+
+floating_modifier $mod normal
+
+# default_border pixel 1
+# default_floating_border  pixel 1
+# hide_edge_borders both
+
+font pango:Source Code Pro 12
+
+######## statusbar ###################################################
+bar {
+    swaybar_command  waybar
+    tray_padding 0
+    mode dock
+}
+
+######## keybindings #################################################
+
+# rename a workspace
+bindsym $mod+n exec sway-input -F 'rename workspace to "%s"' -P 'New name: '
+
+# lock screen
+bindsym $mod+Ctrl+l exec swaylock -f -i ~/.config/sway/lock.png
+
+# start a terminal
+bindsym $mod+Return exec $term
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# start dmenu (a program launcher)
+bindsym $mod+d exec $menu
+
+# change focus
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen
+
+# change container layout (stacked, tabbed, default)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout default
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindcode $mod+d focus child
+
+# switch to workspace
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
+bindsym $mod+Prior workspace prev
+bindsym $mod+Next workspace next
+
+# Move the focused container to workspace.
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
+
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioMute        exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute     exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioStop exec playerctl stop
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86MonBrightnessDown  exec  brightnessctl set 5%-
+bindsym XF86MonBrightnessUp    exec  brightnessctl set +5%
+bindsym XF86SelectiveScreenshot exec sway-interactive-screenshot
+# bindsym XF86NotificationCenter
+# bindsym XF86PickupPhone
+# bindsym XF86HangupPhone
+# bindsym XF86Favorites					  
+#bindsym XF86Calculator    exec wireshark
+#bindsym XF86Explorer      exec mpc volume 0
+#bindsym XF86Mail          exec mpc volume 0
+#bindsym XF86Display       exec xrandr --output eDP1 --off && xrandr --output eDP1 --auto
+
+Bindsym Ctrl+Alt+V exec copyq toggle
+
+# reload the configuration file
+bindsym $mod+Shift+C reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+# bindsym $mod+Shift+R restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+E exec swaynag -t warning -m 'Really exit sway?' -b 'Yes' 'swaymsg exit'
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # They resize the border in the direction you pressed, e.g.
+        # when pressing left, the window is resized so that it has
+        # more space on its left
+
+bindsym Left resize shrink left 10 px or 10 ppt
+bindsym Shift+Left resize grow   left 10 px or 10 ppt
+
+bindsym Down resize shrink down 10 px or 10 ppt
+bindsym Shift+Down resize grow   down 10 px or 10 ppt
+
+bindsym Up resize shrink up 10 px or 10 ppt
+bindsym Shift+Up resize grow   up 10 px or 10 ppt
+
+bindsym Right resize shrink right 10 px or 10 ppt
+bindsym Shift+Right resize grow   right 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+bindsym Return mode "default"
+bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
