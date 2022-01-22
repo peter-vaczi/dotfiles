@@ -99,3 +99,6 @@ window#waybar.hidden {
     background-color: #eb4d4b;
 }
 
+#custom-vpn.connected {
+    color: #4deb4b;
+}

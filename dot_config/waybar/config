@@ -14,6 +14,7 @@
     "modules-right": [
         "disk",
         "network",
+        "custom/vpn",
         "cpu",
         "memory",
         "temperature",
@@ -115,5 +116,14 @@
         "tooltip-format-ethernet": "{ifname} {ipaddr}",
         "tooltip-format-disconnected": "Disconnected",
         "max-length": 50
+    },
+
+    "custom/vpn": {
+        "format": "VPN {icon}",
+        "exec": "vpn-waybar",
+        "return-type": "json",
+        "on-click": "if [[ -d /proc/sys/net/ipv4/conf/tun0 ]]; then vpn-off; else vpn-on; fi",
+        "format-icons": ["", ""],
+        "interval": 5
     }
 }
