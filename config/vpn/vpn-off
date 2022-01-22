@@ -1,8 +1,0 @@
-#!/bin/bash
-
-echo "stop vpnc..."
-#sudo vpnc-disconnect
-sudo killall -9 openconnect
-sudo resolvconf -d tun0
-
-ip route
