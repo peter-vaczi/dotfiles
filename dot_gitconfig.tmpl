@@ -1,0 +1,31 @@
+[user]
+	email = {{ pass "nsn/email" }}
+	name  = Peter Vaczi
+[push]
+	default = upstream
+[fetch]
+  prune = true
+[color]
+  ui =  auto
+  interactive = auto
+[diff]
+  compactionHeuristic = true
+[pager]
+  log  = diff-so-fancy | less -F
+  show = diff-so-fancy | less -F
+  diff = diff-so-fancy | less -F
+[interactive]
+  diffFilter = diff-so-fancy
+[submodule]
+  fetchJobs = 4
+[alias]
+        cm = commit --verbose
+        co = checkout
+        st = status --short --branch
+        br = branch
+        su = submodule update
+        sui = submodule update --init
+        l  = log --all --graph --date=relative --pretty=format:'%C(bold blue)%h - %C(bold yellow)%d%C(reset) %C(white)%s %C(yellow) [%an] %C(green)(%ar)'
+        type = cat-file -t
+        dump = cat-file -p
+        index = diff --cached

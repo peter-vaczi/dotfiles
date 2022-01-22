@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-# unused stuff
-docker rmi $(docker images | grep "^<none>" | awk "{print \$3};")
-
-# old opentas containers
-docker rmi $(docker images '*/opentas/*:*' | grep months | awk '{print $1 ":" $2 " " $3 ;}')
-

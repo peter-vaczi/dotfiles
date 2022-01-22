@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-# delete iptables rules
-sudo iptables -t nat -D REDSOCKS 1 || exit
-sudo iptables -t nat -D REDSOCKS 1 
-sudo iptables -t nat -D OUTPUT -j REDSOCKS
-sudo iptables -t nat -X REDSOCKS

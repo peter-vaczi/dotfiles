@@ -1,82 +1,92 @@
+######## variables  ####################################################
 set $mod Mod4
+set $term qterminal
+#set $term alacritty
 
+# Your preferred application launcher
+# Note: pass the final command to swaymsg so that the resulting window can be opened
+# on the original workspace that the command was run on.
+#set $menu dmenu_path | dmenu | xargs swaymsg exec --
+set $menu dmenu_path | rofi -show drun | xargs swaymsg exec --
+
+######## Output  ####################################################
+
+# Set the background image
+output * bg ~/.config/sway/bg.jpg fill
+
+######## input  #####################################################
+
+# You can get the names of your inputs by running: swaymsg -t get_inputs
+input type:touchpad {
+    tap enabled
+    dwt enabled # disable while typing
+    natural_scroll disabled
+}
+
+input type:touch {
+    events enabled
+    natural_scroll enabled
+}
+
+input type:keyboard {
+    xkb_layout us,hu
+    # caps lock swithes layout
+    xkb_options grp:caps_toggle,grp_led:caps
+}
+
+######## Startup    ########################################
+# This will lock your screen after 300 seconds of inactivity, then turn off
+# your displays after another 300 seconds, and turn your screens back on when
+# resumed. It will also lock your screen before your computer goes to sleep.
+exec swayidle -w \
+         timeout 1800 'swaylock --image ~/.config/sway/lock.png' \
+         timeout 3600 'swaymsg "output * dpms off"' \
+         resume 'swaymsg "output * dpms on"' \
+         before-sleep 'swaylock --image ~/.config/sway/lock.png' \
+         before-sleep 'playerctl pause'
+
+exec copyq
 
 ######## general  ####################################################
-force_focus_wrapping yes
+xwayland enable
+focus_wrapping yes
 focus_follows_mouse yes
 workspace_auto_back_and_forth yes
 
 workspace_layout tabbed
 default_orientation horizontal
 
-floating_modifier $mod
+floating_modifier $mod normal
 
-######## statusbar ###################################################
-bar {
-    status_command py3status -c ~/.i3/statusbar.conf
-    i3bar_command  i3bar
-    mode dock
-    position top
-    #output LVDS1
-    tray_output eDP1
-    font pango:Source Code Pro 12
-    workspace_buttons yes
-    colors {
-        background #000000
-        statusline #ffffff
-        separator #888888
-
-        focused_workspace  #4c7899 #285577 #ffffff
-        active_workspace   #333333 #5f676a #ffffff
-        inactive_workspace #333333 #222222 #888888
-        urgent_workspace   #2f343a #900000 #ffffff
-    }
-}
-
-######## startup  ####################################################
-
-exec_always --no-startup-id feh --bg-center ~/.i3/bg.jpg
-exec --no-startup-id syndaemon -t -k -i 2 # disable touchpad clicking and scrolling during keyboard activity
-exec_always --no-startup-id xmodmap -e "keysym Menu = Super_R"
-
-######## look and feel ###############################################
-
-new_window 1pixel
-new_float  1pixel
-hide_edge_borders both
+# default_border pixel 1
+# default_floating_border  pixel 1
+# hide_edge_borders both
 
 font pango:Source Code Pro 12
 
-# colors
-# class                 border  backgr. text
-client.focused          #4c7899 #285577 #ffffff
-client.focused_inactive #333333 #5f676a #ffffff
-client.unfocused        #333333 #222222 #888888
-client.urgent           #2f343a #900000 #ffffff
+######## statusbar ###################################################
+bar {
+    swaybar_command  waybar
+    tray_padding 0
+    mode dock
+}
 
 ######## keybindings #################################################
 
 # rename a workspace
-bindsym $mod+n exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
+bindsym $mod+n exec sway-input -F 'rename workspace to "%s"' -P 'New name: '
 
 # lock screen
-bindsym $mod+Ctrl+l exec i3lock -f -i ~/.i3/lock.png
+bindsym $mod+Ctrl+l exec swaylock -f -i ~/.config/sway/lock.png
 
 # start a terminal
-bindsym $mod+Return exec qterminal
+bindsym $mod+Return exec $term
 
 # kill focused window
-bindsym $mod+Shift+Q kill
+bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec i3-dmenu-desktop
-
-# screen capture
-bindcode 107 exec shutter
-#bindsym PrintScreen exec shutter
-
-# switch keyboard layout
-bindsym $mod+k exec switchkbd
+bindsym $mod+d exec $menu
 
 # change focus
 bindsym $mod+Left focus left
@@ -142,32 +152,34 @@ bindsym $mod+Shift+8 move container to workspace number 8
 bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
 
-# audio controls
-bindsym XF86AudioLowerVolume exec amixer -q set Master 4%- unmute
-bindsym XF86AudioRaiseVolume exec amixer -q set Master 4%+ unmute
-bindsym XF86AudioMute        exec amixer -q set Master toggle
-
-bindsym XF86AudioStop        exec mpc stop
-bindsym XF86AudioPrev        exec mpc prev
-bindsym XF86AudioNext        exec mpc next
-bindsym XF86AudioPlay        exec mpc toggle
-
-# backlight
-bindsym XF86MonBrightnessDown  exec  backlight_control -5
-bindsym XF86MonBrightnessUp    exec  backlight_control +5
-
-# audio controls
-bindsym XF86Calculator    exec wireshark
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioMute        exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute     exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioStop exec playerctl stop
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86MonBrightnessDown  exec  brightnessctl set 5%-
+bindsym XF86MonBrightnessUp    exec  brightnessctl set +5%
+bindsym XF86SelectiveScreenshot exec sway-interactive-screenshot
+# bindsym XF86NotificationCenter
+# bindsym XF86PickupPhone
+# bindsym XF86HangupPhone
+# bindsym XF86Favorites					  
+#bindsym XF86Calculator    exec wireshark
 #bindsym XF86Explorer      exec mpc volume 0
 #bindsym XF86Mail          exec mpc volume 0
-bindsym XF86Display       exec xrandr --output eDP1 --off && xrandr --output eDP1 --auto
+#bindsym XF86Display       exec xrandr --output eDP1 --off && xrandr --output eDP1 --auto
+
+Bindsym Ctrl+Alt+V exec copyq toggle
 
 # reload the configuration file
 bindsym $mod+Shift+C reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+R restart
+# bindsym $mod+Shift+R restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+E exit
+bindsym $mod+Shift+E exec swaynag -t warning -m 'Really exit sway?' -b 'Yes' 'swaymsg exit'
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
