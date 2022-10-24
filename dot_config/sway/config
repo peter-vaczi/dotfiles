@@ -12,7 +12,10 @@ set $menu dmenu_path | rofi -show drun | xargs swaymsg exec --
 ######## Output  ####################################################
 
 # Set the background image
-output * bg ~/.config/sway/bg.jpg fill
+output * bg ~/.config/sway/bg.png fill
+
+output eDP-1 pos 0 0
+output HDMI-A-1 pos -2560 -360
 
 ######## input  #####################################################
 
@@ -45,7 +48,8 @@ exec swayidle -w \
          before-sleep 'swaylock --image ~/.config/sway/lock.png' \
          before-sleep 'playerctl pause'
 
-exec copyq
+exec (sleep 10; copyq)&
+for_window [app_id="com.github.hluk.copyq"] floating enable
 
 ######## general  ####################################################
 xwayland enable
@@ -74,7 +78,7 @@ bar {
 ######## keybindings #################################################
 
 # rename a workspace
-bindsym $mod+n exec sway-input -F 'rename workspace to "%s"' -P 'New name: '
+bindsym $mod+n exec /home/ptr/bin/sway-rename-workspace.sh
 
 # lock screen
 bindsym $mod+Ctrl+l exec swaylock -f -i ~/.config/sway/lock.png
@@ -152,6 +156,12 @@ bindsym $mod+Shift+8 move container to workspace number 8
 bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
 
+# Move the focused workspace to output.
+bindsym $mod+Ctrl+right move workspace to right
+bindsym $mod+Ctrl+left move workspace to left
+bindsym $mod+Ctrl+up move workspace to up
+bindsym $mod+Ctrl+down move workspace to down
+
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioMute        exec pactl set-sink-mute @DEFAULT_SINK@ toggle
@@ -207,3 +217,5 @@ bindsym Escape mode "default"
 }
 
 bindsym $mod+r mode "resize"
+
+include /etc/sway/config.d/*
