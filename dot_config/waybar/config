@@ -4,7 +4,9 @@
 
     "modules-left": [
         "sway/workspaces",
-        "sway/mode"
+        "sway/mode",
+        "clock#1",
+        "clock#2"
     ],
     
     // "modules-center": [
@@ -20,7 +22,6 @@
         "temperature",
         "battery",
         "pulseaudio",
-        // "clock",
         "tray"
     ],
 
@@ -94,9 +95,15 @@
         ]
     },
 
-    "clock": {
-        // "format": "{:%a %Y %b %d %R}"
-        // "format": "  {:%H:%M}  {:%Y.%m.%d}",
+    "clock#1": {
+        //"format": "{:%a %Y %b %d %R}",
+        "format": " {:%Y.%m.%d}",
+        "tooltip": false
+    },
+
+    "clock#2": {
+        //"format": "{:%a %Y %b %d %R}",
+        "format": " {:%H:%M}",
         "tooltip": false
     },
 
@@ -108,7 +115,7 @@
     "network": {
         "interface": "wlan0",
         "format": "{ifname}",
-        "format-wifi": " {essid} {ipaddr}",
+        "format-wifi": " {essid}",
         "format-ethernet": " {ipaddr}",
         "format-linked": "",
         "format-disconnected": "⚠",
@@ -120,10 +127,10 @@
 
     "custom/vpn": {
         "format": "VPN {icon}",
-        "exec": "vpn-waybar",
+        "exec": "/home/ptr/bin/vpn-waybar",
         "return-type": "json",
-        "on-click": "if [[ -d /proc/sys/net/ipv4/conf/tun0 ]]; then vpn-off; else vpn-on; fi",
-        "format-icons": ["", "", ""],
+        "on-click": "if [[ -d /proc/sys/net/ipv4/conf/tun0 ]]; then /home/ptr/bin/vpn-off; else /home/ptr/bin/vpn-on; fi",
+        "format-icons": ["", ""],
         "interval": 2
     }
 }
