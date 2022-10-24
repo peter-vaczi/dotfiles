@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+sudo ${HOME}/work/rind/rind.sh stop
