@@ -22,6 +22,7 @@
         "temperature",
         "battery",
         "pulseaudio",
+        "backlight",
         "tray"
     ],
 
@@ -41,7 +42,7 @@
     },
 
     "cpu": {
-        "format": " {usage}%  {avg_frequency}GHz"
+        "format": " {usage}%"
     },
 
     "memory": {
@@ -116,7 +117,7 @@
         "interface": "wlan0",
         "format": "{ifname}",
         "format-wifi": " {essid}",
-        "format-ethernet": " {ipaddr}",
+        "format-ethernet": "",
         "format-linked": "",
         "format-disconnected": "⚠",
         "tooltip-format-wifi": "{ifname} {essid} {ipaddr} ({signalStrength}%) ",
