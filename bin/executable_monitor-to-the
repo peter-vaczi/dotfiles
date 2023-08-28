@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+
+# ❯ xrandr --listmonitors         
+# Monitors: 2
+#  0: +eDP-1 1920/310x1080/170+0+0  eDP-1
+#  1: +HDMI-A-1 2560/600x1440/340+1980+-360  HDMI-A-1
+
+#  width-pixel/width-mm x height-pixel/height-mm + posx + posy
+
+# print a triplet: monitor-name width-in-pixels height-in-pixels
+monitorInfo()
+{
+    local id=$1
+    local mon_info name modes w h
+    mon_info=$(xrandr --listmonitors | grep "${id}:")
+    name=$(echo "$mon_info" | awk '{print $4;}')
+    modes=$(echo "$mon_info" | awk '{print $3;}')
+    w=$(echo "$modes" | cut -d x -f 1 | cut -d / -f 1)
+    h=$(echo "$modes" | cut -d x -f 2 | cut -d / -f 1)
+
+    echo "$name $w $h"
+}
+
+# assume that the display 0 is the laptop screen, and display 1 is the monitor
+read -r name1 w1 h1 <<< "$(monitorInfo 0)"
+read -r name2 w2 h2 <<< "$(monitorInfo 1)"
+
+# align the bottom of the monitors, so we need the diff of their heights
+((d=h1-h2))
+
+param=$1
+
+while true; do
+    case $param in
+        "left"|"l"|"L")
+            swaymsg output -- "$name2" pos "-$w2" "$d"
+            break
+            ;;
+        "right"|"r"|"R")
+            swaymsg output -- "$name2" pos "$w1" "$d"
+            break
+            ;;
+        *)
+            echo "put the monitor to the left or right of the laptop? [l/r]"
+            read -r param
+    esac
+done
+            
