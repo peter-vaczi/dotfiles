@@ -110,3 +110,7 @@ window#waybar.hidden {
     color: #4deb4b;
 }
 
+#custom-proxy.connected {
+    color: #4deb4b;
+}
+

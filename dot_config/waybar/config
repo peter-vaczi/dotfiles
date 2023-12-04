@@ -17,6 +17,7 @@
         "disk",
         "network",
         "custom/vpn",
+        "custom/proxy",
         "cpu",
         "memory",
         "temperature",
@@ -131,6 +132,15 @@
         "exec": "/home/ptr/bin/vpn-waybar",
         "return-type": "json",
         "on-click": "if [[ -d /proc/sys/net/ipv4/conf/tun0 ]]; then /home/ptr/bin/vpn-off; else /home/ptr/bin/vpn-on; fi",
+        "format-icons": ["", ""],
+        "interval": 2
+    },
+
+    "custom/proxy": {
+        "format": "PRX {icon}",
+        "exec": "/home/ptr/bin/proxy-waybar",
+        "return-type": "json",
+        "on-click": "if docker ps | grep -q redsocks-proxy; then /home/ptr/bin/proxy-off; else /home/ptr/bin/proxy-on; fi",
         "format-icons": ["", ""],
         "interval": 2
     }

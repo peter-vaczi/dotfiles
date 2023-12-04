@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if docker ps | grep -q redsocks-proxy; then
+    tooltip="proxy enabled"
+    class="connected"
+    percentage="100"
+else
+    tooltip="proxy disabled"
+    class="disconnected"
+    percentage="0"
+fi
+
+printf '{"tooltip": "%s", "class": "%s", "percentage": %d}' "$tooltip" "$class" "$percentage"
