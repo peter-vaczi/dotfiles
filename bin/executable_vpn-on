@@ -5,12 +5,19 @@ source ${HOME}/.vpn-credentials
 # environment variables processed by /etc/vpnc/vpnc-script
 export CISCO_SPLIT_DNS=${NSN_DOMAINS}
 
+#if this is an interactive shell
+if [ -t 0 ]; then
+    :
+else
+    OPTS=--background
+fi
+
 echo
 echo "start openconnect..."
 token="$(2fa nokia)"
 echo -e "$NSN_PASS\n$token" |
     sudo -E \
-         openconnect -v --background --no-proxy --disable-ipv6 --mtu 1401 --passwd-on-stdin \
+         openconnect -v $OPTS --no-proxy --disable-ipv6 --mtu 1401 --passwd-on-stdin \
          --user "${NSN_EMAIL}" --usergroup EE-Linux \
          --certificate ${CERT} --sslkey ${KEY} --key-password ${VPN_PASSPHRASE} \
          ${VPN_GW}
