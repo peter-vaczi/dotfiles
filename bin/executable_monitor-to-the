@@ -26,18 +26,26 @@ read -r name1 w1 h1 <<< "$(monitorInfo 0)"
 read -r name2 w2 h2 <<< "$(monitorInfo 1)"
 
 # align the bottom of the monitors, so we need the diff of their heights
-((d=h1-h2))
+if ((h1 > h2)); then
+    y1=0
+    y2=$((h1 - h2))
+else
+    y1=$((h2 - h1))
+    y2=0
+fi
 
 param=$1
 
 while true; do
     case $param in
         "left"|"l"|"L")
-            swaymsg output -- "$name2" pos "-$w2" "$d"
+            x1=$w2
+            x2=0
             break
             ;;
         "right"|"r"|"R")
-            swaymsg output -- "$name2" pos "$w1" "$d"
+            x1=0
+            x2=$w1
             break
             ;;
         *)
@@ -45,4 +53,7 @@ while true; do
             read -r param
     esac
 done
-            
+
+swaymsg output -- "$name1" pos "$x1" "$y1"
+swaymsg output -- "$name2" pos "$x2" "$y2"
+
