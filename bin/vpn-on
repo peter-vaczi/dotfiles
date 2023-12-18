@@ -1,0 +1,28 @@
+#!/bin/bash
+
+#if this is an interactive shell
+if [ -t 0 ]; then
+    :
+else
+    OPTS=--background
+fi
+
+GW=$(pass work/vpn-gw)
+CERT=$(pass work/vpn-cert)
+KEY=$(pass work/vpn-privkey)
+PASSPHRASE=$(pass work/vpn-passphrase)
+PASSWORD=$(pass work/password)
+EMAIL=$(pass work/email)
+TOKEN="$(2fa work)"
+
+# environment variables processed by /etc/vpnc/vpnc-script
+export CISCO_SPLIT_DNS=$(pass work/dns-domains)
+
+echo
+echo "start openconnect..."
+echo -e "$PASSWORD\n$TOKEN" |
+    sudo -E \
+         openconnect -v ${OPTS} --no-proxy --disable-ipv6 --mtu 1401 --passwd-on-stdin \
+         --user "${EMAIL}" --certificate "${CERT}" --sslkey "${KEY}" --key-password "${PASSPHRASE}" \
+         "${GW}"
+
