@@ -1,0 +1,29 @@
+# Default config for sway
+# Styles
+set $theme /usr/share/ubuntusway/themes/yaru-sway
+
+# theme variables
+include $theme/variables
+
+# User variables
+include $HOME/.config/sway/variables.conf
+
+include $HOME/.config/sway/default-screen.conf
+include $HOME/.config/sway/inputs.conf
+
+# include modes
+include $HOME/.config/sway/keybindings.conf
+include $HOME/.config/sway/recording.conf
+include $HOME/.config/sway/resize.conf
+include $HOME/.config/sway/screenshot.conf
+include $HOME/.config/sway/scratchpad.conf
+
+# Additional configs
+include $HOME/.config/sway/waybar.conf
+include $HOME/.config/sway/applications-defaults.conf
+include $HOME/.config/sway/autostart.conf
+include $HOME/.config/sway/systemd-user.conf
+
+# Include nwg-displays config's (if exists)
+include $HOME/.config/sway/outputs
+include $HOME/.config/sway/workspaces
