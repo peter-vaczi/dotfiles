@@ -5,6 +5,11 @@ set $theme /usr/share/ubuntusway/themes/yaru-sway
 # theme variables
 include $theme/variables
 
+workspace_layout tabbed
+default_orientation horizontal
+workspace_auto_back_and_forth yes
+focus_follows_mouse yes
+
 # User variables
 include $HOME/.config/sway/variables.conf
 
