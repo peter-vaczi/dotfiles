@@ -426,6 +426,16 @@ annoying, sometimes be useful, that's why this can be handly."
 ;; (copilot-login)
 
 ;; ---------------------------------------------------------------------
+;; mr-template-defult
+(defun mr-template-default ()
+  "Fill an mr description file with a default value."
+  (interactive)
+  (erase-buffer)
+  (insert-file-contents "~/work/mr-template-default.md")
+  (forward-line 14)
+  )
+
+;; ---------------------------------------------------------------------
 ; global key bindings
 (global-set-key (kbd "M-g") 'goto-line)
 (global-set-key (kbd "M-f") 'find-file-at-point)
