@@ -274,18 +274,20 @@
 
     "custom/vpn": {
         "format": "VPN {icon}",
-        "exec": "/home/ptr/bin/vpn-waybar",
+        "exec": "${HOME}/bin/vpn-waybar",
         "return-type": "json",
-        "on-click": "if [[ -d /proc/sys/net/ipv4/conf/tun0 ]]; then /home/ptr/bin/vpn-off; else /home/ptr/bin/vpn-on; fi",
+        "on-click": "${HOME}/bin/vpn-on",
+        "on-click-right": "${HOME}/bin/vpn-off",
         "format-icons": ["", ""],
         "interval": 2
     },
 
     "custom/proxy": {
         "format": "PRX {icon}",
-        "exec": "/home/ptr/bin/proxy-waybar",
+        "exec": "${HOME}/bin/proxy-waybar",
         "return-type": "json",
-        "on-click": "if docker ps | grep -q redsocks-proxy; then /home/ptr/bin/proxy-off; else /home/ptr/bin/proxy-on; fi",
+        "on-click": "${HOME}/bin/proxy-on",
+        "on-click-right": "${HOME}/bin/proxy-off",
         "format-icons": ["", ""],
         "interval": 2
     }

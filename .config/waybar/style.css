@@ -163,9 +163,14 @@ window#waybar.hidden {
 #custom-vpn.connected {
 }
 
+#custom-vpn.connecting {
+    background: @warning_color;
+    color: @wm_icon_bg;
+}
+
 #custom-vpn.disconnected {
     background: @theme_bg_color;
-    color: @wm_icon_bg
+    color: @wm_icon_bg;
 }
 
 #custom-proxy.connected {
@@ -173,7 +178,7 @@ window#waybar.hidden {
 
 #custom-proxy.disconnected {
     background: @theme_bg_color;
-    color: @wm_icon_bg
+    color: @wm_icon_bg;
 }
 
 #battery.warning.discharging {
