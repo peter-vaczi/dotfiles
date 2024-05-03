@@ -3,8 +3,8 @@ profile laptop {
 }
 
 profile home {
-	output eDP-1 mode 1920x1080 position 0,360
-	output "Dell Inc. DELL U2717D J0XYN7ANCHXL" mode 2560x1440 position 1920,0
+	output eDP-1 mode 1920x1080 position 2560,360
+	output "Dell Inc. DELL U2717D J0XYN7ANCHXL" mode 2560x1440 position 0,0
 }
 
 profile work1 {

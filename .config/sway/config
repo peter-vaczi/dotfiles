@@ -1,9 +1,4 @@
-# Default config for sway
-# Styles
-set $theme /usr/share/ubuntusway/themes/yaru-sway
-
-# theme variables
-include $theme/variables
+include $HOME/.config/sway/colors.conf
 
 workspace_layout tabbed
 default_orientation horizontal

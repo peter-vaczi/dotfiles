@@ -1,27 +1,26 @@
+
 {
     "layer": "top",
     "position": "top",
     "height": 30,
-    "modules-left": ["custom/menu", "sway/workspaces"], // , "sway/window"
+    "modules-left": ["sway/workspaces"], // , "sway/window"
     "modules-center": ["custom/wf-recorder", "sway/mode"],
     "modules-right": [
+        "custom/vpn",
+        "custom/proxy",
         "custom/weather",
-        "custom/wlsunset",
         "custom/playerctl",
-        // "custom/scratchpad",
         "idle_inhibitor",
-        "custom/dnd",
+        // "custom/dnd",
         "sway/language",
         "custom/clipboard",
         "cpu",
         "memory",
         "disk",
-        "battery",
         "network",
-        "custom/vpn",
-        "custom/proxy",
         "bluetooth",
         "pulseaudio",
+        "battery",
         "clock",
         "custom/power",
         "tray"
@@ -51,12 +50,6 @@
         "signal": 9
     },
 
-    "custom/menu": {
-        "format": "",
-        "on-click": "exec nwg-drawer",
-        "tooltip": false
-    },
-    
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>",
         "tooltip": false
@@ -155,7 +148,7 @@
     "disk":{
         "path": "/",
         "format": " {free}",
-        "on-click": "pcmanfm",
+        "on-click": "nautilus",
         "states": {
           "warning": 80,
           "critical": 90
@@ -192,7 +185,7 @@
 
     "custom/power": {
         "format": "",
-        "on-click": "nwg-bar -x"
+        "on-click": "$HOME/bin/sway-scripts/rofi-logout.sh"
     },
 
     "custom/dnd": {
@@ -213,7 +206,7 @@
         "format": "{icon} {}",
         "tooltip": true,
         "interval": 3600,
-        "exec": "/usr/share/sway/scripts/weather.py",
+        "exec": "$HOME/bin/sway-scripts/weather.py",
         "return-type": "json",
         "format-icons": {
            "Unknown": "✨",
@@ -238,35 +231,6 @@
         }
     },
 
-    "custom/wlsunset": {
-        "interval": "once",
-        "tooltip": true,
-        "tooltip-format": "{tooltip}",
-        "return-type": "json",
-        "format": "{icon}",
-        "format-icons": {
-            "on": "",
-            "off": ""
-        },
-        "exec": "fallback_latitude=50.1 fallback_longitude=8.7 latitude= longitude= /usr/share/sway/scripts/sunset.sh",
-        "on-click": "/usr/share/sway/scripts/sunset.sh toggle; pkill -RTMIN+6 waybar",
-        "exec-if": "/usr/share/sway/scripts/sunset.sh check",
-        "signal": 6
-    },
-
-    "custom/scratchpad": {
-        "interval": "once",
-        "return-type": "json",
-        "format": "{icon}",
-        "format-icons": {
-            "one": "",
-            "many": ""
-        },
-        "exec": "/bin/bash /usr/share/sway/scripts/scratchpad.sh; pkill -RTMIN+7 waybar",
-        "on-click": "swaymsg 'scratchpad show'",
-        "signal": 7
-    },
-    
     "tray": {
         "icon-size": 21,
         "spacing": 10

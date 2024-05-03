@@ -1,0 +1,10 @@
+font="hack 10"
+text-color=#2f2f2f
+border-color=#bdc3c7
+background-color=#317b79
+border-size=2
+width=500
+height=200
+padding=20
+margin=20
+default-timeout=10000
