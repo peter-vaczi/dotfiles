@@ -1,0 +1,25 @@
+#!/bin/bash
+
+if [[ "ptr" != "$USER" ]]; then
+    echo "switching to user ptr"
+    sudo -u ptr -E XDG_RUNTIME_DIR=/run/user/1000 $0 "$@"
+    exit
+fi
+
+set_hadsfree()
+{
+    local name=$1
+    local card=$2
+    
+    for i in {1..10}; do
+        if pactl set-card-profile "$card" handsfree_head_unit; then
+            notify-send -i audio-headset -t 3000 -u low "$name connected and set to handsfree mode"
+            return
+        fi
+        sleep 1
+    done
+}
+
+if [[ $NAME =~ "FreeBuds 3" ]]; then
+    set_hadsfree "FreeBuds" "bluez_card.AC_BD_70_54_EE_48"
+fi
