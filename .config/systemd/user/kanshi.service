@@ -1,0 +1,13 @@
+[Unit]
+Description=Dynamic output configuration for Wayland compositors
+Documentation=https://sr.ht/~emersion/kanshi
+PartOf=graphical-session.target
+After=graphical-session.target
+Requisite=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/kanshi
+
+[Install]
+WantedBy=graphical-session.target

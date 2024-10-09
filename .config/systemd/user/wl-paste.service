@@ -1,0 +1,14 @@
+[Unit]
+Description=Store clipboard items in clipman's history
+Documentation=https://github.com/bugaevc/wl-clipboard
+PartOf=graphical-session.target
+After=graphical-session.target
+Requisite=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=wl-paste --watch clipman store
+Restart=on-failure
+
+[Install]
+WantedBy=graphical-session.target

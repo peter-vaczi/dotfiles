@@ -11,7 +11,7 @@
         "custom/weather",
         "custom/playerctl",
         "idle_inhibitor",
-        // "custom/dnd",
+        "custom/dnd",
         "sway/language",
         "custom/clipboard",
         "cpu",
@@ -194,10 +194,10 @@
         "format": "{}{icon}",
         "format-icons": {
             "default": "",
-            "dnd": ""
+            "dnd": ""
         },
-        "on-click": "makoctl mode | grep 'do-not-disturb' && makoctl mode -r do-not-disturb || makoctl mode -a do-not-disturb; pkill -RTMIN+11 waybar",
-        "exec": "printf '{\"alt\":\"%s\",\"tooltip\":\"Notification mode: %s\"}' $(makoctl mode | grep -q 'do-not-disturb' && echo dnd || echo default) $(makoctl mode | tail -1)",
+        "on-click": "swaync-client --toggle-dnd; pkill -RTMIN+11 waybar",
+        "exec": "printf '{\"alt\":\"%s\",\"tooltip\":\"Notifications %s\"}' $(swaync-client --get-dnd | grep -q 'true' && echo dnd || echo default) $(swaync-client --get-dnd | grep -q 'false' && echo enabled || echo disabled)",
         "signal": 11
     },
     
