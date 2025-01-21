@@ -2,9 +2,14 @@ profile laptop {
 	output eDP-1 mode 1920x1080 position 0,0
 }
 
-profile home {
+profile home1 {
 	output eDP-1 mode 1920x1080 position 2560,360
 	output "Dell Inc. DELL U2717D J0XYN7ANCHXL" mode 2560x1440 position 0,0
+}
+
+profile home2 {
+	output eDP-1 mode 1920x1080 position 1920,600
+	output "Unknown HP M27fw FHD 3CM1240NBK" mode 1920x1080 position 0,0
 }
 
 profile work1 {
