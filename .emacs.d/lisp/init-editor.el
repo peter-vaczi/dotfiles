@@ -8,6 +8,7 @@
 (delete-selection-mode 1)            ; Replace selection when inserting text
 (xclip-mode 1)                       ; use the system clipboard
 (normal-erase-is-backspace-mode 1)   ; make backspace work
+(savehist-mode 1)                    ; save/restore command history
 
 (set-default-coding-systems 'utf-8)  ; use utf-8
 

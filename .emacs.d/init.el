@@ -88,7 +88,7 @@
 ;; swiper
 (use-package swiper
   :ensure t
-  :bind (("C-s" . swiper)
+  :bind (;("C-s" . swiper)
          ("C-M-s" . isearch-forward-regexp)
          ("C-M-r" . isearch-backward-regexp))
   )
@@ -190,11 +190,18 @@
   (forward-line 14)
   )
 
+(defun mr-template-full-ft ()
+  "Imsert a comment to execute full-FT."
+  (interactive)
+  (insert-file-contents "~/work/mr-template-full-ft.md")
+  )
+
 (require 'init-editor)
 (require 'init-git)
 (require 'init-c)
 (require 'init-go)
 (require 'init-copilot)
+(require 'init-bookmarks)
 
 ;; ---------------------------------------------------------------------
 ; global key bindings
