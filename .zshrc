@@ -104,9 +104,12 @@ alias mergeit='glab mr note -m "merge it"'
 alias mrready='glab mr update --ready'
 alias mrdraft='glab mr update --draft'
 alias mredit='glab mr update -d -'
+alias mrlabel='glab mr update --label'
+alias mrtarget='glab mr update --target-branch'
 alias mrview='glab mr view --comments --system-logs'
 alias mrweb='glab mr view --web'
 alias mrdiff='glab mr diff'
+alias mrcomment='glab mr note -m'
 
 export MOZ_ENABLE_WAYLAND=1
 
