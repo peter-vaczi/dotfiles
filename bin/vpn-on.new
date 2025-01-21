@@ -1,0 +1,86 @@
+#!/usr/bin/expect -f
+
+set timeout 60
+
+proc get_pass {key} {
+    spawn pass $key
+    expect -re "\[^\r\n]+" {
+        set pass $expect_out(0,string)
+        return $pass
+    }
+}
+
+proc get_token {account pass} {
+    spawn otpclient-cli show -a $account
+    expect {
+        password: {
+            send "$pass\r"
+            exp_continue
+        }
+        -re "Current TOTP .*: (\[0-9]+)" {
+            return $expect_out(1,string);
+        }
+    }
+}
+
+proc parseargs {argc argv} {
+    global gw token
+    foreach {key val} $argv {
+        switch -exact -- $key {
+            "--gateway"   { set gw    $val }
+            "--token"     { set token $val }
+        }
+    }
+}
+
+log_user 0
+
+# get all the data for the openconnect call
+set otp_password [get_pass work/otp-password]
+set otp_account  [get_pass work/otp-account]
+set gw           [get_pass work/vpn-gw]
+set cert         [get_pass work/vpn-cert]
+set key          [get_pass work/vpn-privkey]
+set passphrase   [get_pass work/vpn-passphrase]
+set password     [get_pass work/password]
+set email        [get_pass work/email]
+set token        [get_token $otp_account $otp_password]
+
+parseargs $argc $argv
+puts "connecting to $gw"
+
+spawn sudo -E openconnect -v \
+         --no-proxy \
+         --disable-ipv6 \
+         --mtu 1401 \
+         --user $email \
+         --certificate $cert \
+         --sslkey $key \
+         --usergroup "EE-Linux" \
+         --useragent "AnyConnect" \
+         $gw
+
+expect {
+    "\nPassword:" {
+        send "$password\n"
+        exp_continue
+    }
+    "\nResponse:" {
+        send "$token\n"
+        exp_continue
+    }
+    "\nEnter PEM pass phrase:" {
+        send "$passphrase\n"
+        exp_continue
+    }
+    -re "Configured as (\[0-9\.]+)," {
+        set ip $expect_out(1,string)
+        puts "connected to $ip"
+    }
+}
+interact
+
+# go to the background
+#if {[fork] != 0} exit
+#disconnect
+

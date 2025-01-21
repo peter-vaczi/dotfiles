@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if [[ -d /proc/sys/net/ipv4/conf/tun0 ]]; then
+    tooltip="$(ip addr show dev tun0 | grep 'inet ' | sed -e 's/.*inet //' -e 's!/.*!!')"
+    class="connected"
+    percentage="100"
+elif pgrep openconnect; then
+    tooltip="connecting..."
+    class="connecting"
+    percentage="10"
+else
+    tooltip="disconnected"
+    class="disconnected"
+    percentage="0"
+fi
+
+tooltip="$tooltip\nleft click to connect\nright click to disconnect"
+
+printf '{"tooltip": "%s", "class": "%s", "percentage": %d}' "$tooltip" "$class" "$percentage"

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+source ${HOME}/.vpn-credentials
+
+# environment variables processed by /etc/vpnc/vpnc-script
+export CISCO_SPLIT_DNS=${NSN_DOMAINS}
+
+sudo -E \
+         openconnect -v $OPTS --no-proxy --disable-ipv6 --mtu 1401 \
+         --user "${NSN_EMAIL}" --usergroup EE-Linux \
+         --certificate ${CERT} --sslkey ${KEY} --key-password ${VPN_PASSPHRASE} \
+         ${VPN_GW}
+

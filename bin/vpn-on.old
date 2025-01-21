@@ -1,0 +1,86 @@
+#!/bin/bash
+
+set -Eeuo pipefail
+
+usage() {
+  cat <<EOF
+Usage: $(basename "${BASH_SOURCE[0]}") [-h] [-v] [-f] -p param_value arg1 [arg2...]
+
+Start office VPN connection
+
+Available options:
+
+-h, --help      Print this help and exit
+-v, --verbose   Print script debug info
+-n, --no-token  Do not use 2fa app token, ask interactively instead
+EOF
+  exit
+}
+
+msg() {
+  echo >&2 -e "${1-}"
+}
+
+die() {
+  local msg=$1
+  local code=${2-1} # default exit status 1
+  msg "$msg"
+  exit "$code"
+}
+
+parse_params() {
+    TOKEN=''
+
+    while :; do
+        case "${1-}" in
+            -h | --help) usage; exit ;;
+            -v | --verbose) set -x ;;
+            -t | --token) TOKEN="${2-}"; shift ;;
+            -g | --gateway) GW="${2-}"; shift ;;
+            -?*) die "Unknown option: $1" ;;
+            *) break ;;
+        esac
+        shift
+    done
+
+    args=("$@")
+}
+
+GW=$(pass work/vpn-gw)
+CERT=$(pass work/vpn-cert)
+KEY=$(pass work/vpn-privkey)
+PASSPHRASE=$(pass work/vpn-passphrase)
+PASSWORD=$(pass work/password)
+EMAIL=$(pass work/email)
+OPTS=""
+
+# environment variables processed by /etc/vpnc/vpnc-script
+export CISCO_SPLIT_DNS=$(pass work/dns-domains)
+
+#if this is an interactive shell
+if [ -t 0 ]; then
+    :
+else
+    OPTS=--background
+fi
+
+parse_params "$@"
+
+if [[ -z $TOKEN ]]; then
+    TOKEN="$(2fa work)"
+fi
+
+msg "start openconnect..."
+echo -e "$PASSWORD\n$TOKEN" |
+    sudo -E \
+         openconnect -v ${OPTS} \
+         --no-proxy \
+         --disable-ipv6 \
+         --mtu 1401 \
+         --user "${EMAIL}" \
+         --certificate "${CERT}" \
+         --sslkey "${KEY}" \
+         --key-password "${PASSPHRASE}" \
+         --passwd-on-stdin \
+         "${GW}"
+
