@@ -42,10 +42,10 @@
  '(mouse-wheel-follow-mouse t)
  '(mouse-wheel-mode t)
  '(package-selected-packages
-   '(async auto-package-update bm cmake-mode company-box copilot diminish docker docker-compose-mode
-           docker-tramp flycheck ghub git-gutter go-autocomplete go-mode graphql iedit json-mode
-           json-reformat magit markdown-mode pkg-info quelpa-use-package spacemacs-theme swiper
-           xclip))
+   '(async auto-package-update bm cmake-mode company-box copilot copilot-chat diminish docker
+           docker-compose-mode docker-tramp flycheck ghub git-gutter go-autocomplete go-mode graphql
+           iedit json-mode json-reformat magit markdown-mode pkg-info quelpa-use-package
+           spacemacs-theme swiper xclip))
  '(printer-name "bucit25b5.nsn-net.net")
  '(show-paren-style 'expression)
  '(tab-width 2)

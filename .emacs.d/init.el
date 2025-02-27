@@ -71,18 +71,18 @@
 
 ;; ---------------------------------------------------------------------
 ;; company
-(use-package company
-  :diminish
-  :config
-  (setq company-idle-delay 0.1)
-  (setq company-minimum-prefix-length 2)
-  (setq company-selection-wrap-around t)
-  (setq company-tooltip-align-annotations t)
-  (global-company-mode 1)
-  )
+;; (use-package company
+;;   :diminish
+;;   :config
+;;   (setq company-idle-delay 0.1)
+;;   (setq company-minimum-prefix-length 2)
+;;   (setq company-selection-wrap-around t)
+;;   (setq company-tooltip-align-annotations t)
+;;   (global-company-mode 1)
+;;   )
 
-(use-package company-box
-  :hook (company-mode . company-box-mode))
+;; (use-package company-box
+;;   :hook (company-mode . company-box-mode))
 
 ;; ---------------------------------------------------------------------
 ;; swiper
@@ -107,19 +107,19 @@
 
 ;; ---------------------------------------------------------------------
 ;; mark
-(defun push-mark-no-activate ()
-  "Pushes `point' to `mark-ring' and does not activate the region."
-  (interactive)
-  (push-mark (point) t nil)
-  (message "Pushed mark to ring"))
+;; (defun push-mark-no-activate ()
+;;   "Pushes `point' to `mark-ring' and does not activate the region."
+;;   (interactive)
+;;   (push-mark (point) t nil)
+;;   (message "Pushed mark to ring"))
 
-(global-set-key (kbd "C-`") 'push-mark-no-activate)
+;; (global-set-key (kbd "C-`") 'push-mark-no-activate)
 
-(defun jump-to-mark ()
-  "Jumps to the local mark, respecting the `mark-ring' order."
-  (interactive)
-  (set-mark-command 1))
-(global-set-key (kbd "M-`") 'jump-to-mark)
+;; (defun jump-to-mark ()
+;;   "Jumps to the local mark, respecting the `mark-ring' order."
+;;   (interactive)
+;;   (set-mark-command 1))
+;; (global-set-key (kbd "M-`") 'jump-to-mark)
 
 ;; ---------------------------------------------------------------------
 (use-package ibuffer
