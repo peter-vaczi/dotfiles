@@ -8,9 +8,11 @@ fi
 
 set_hadsfree()
 {
-    local name=$1
-    local card=$2
+    local name=$1 # name in the udev ATTR{name} field (or a prefix of that name)
+    local card=$2 # card name in pactl list cards short
     
+    [[ $NAME =~ $name ]] || return
+
     for i in {1..10}; do
         if pactl set-card-profile "$card" handsfree_head_unit; then
             notify-send -i audio-headset -t 3000 -u low "$name connected and set to handsfree mode"
@@ -20,6 +22,7 @@ set_hadsfree()
     done
 }
 
-if [[ $NAME =~ "FreeBuds 3" ]]; then
-    set_hadsfree "FreeBuds" "bluez_card.AC_BD_70_54_EE_48"
-fi
+set_hadsfree "FreeBuds 3" "bluez_card.AC_BD_70_54_EE_48"
+set_hadsfree "PLT Focus" "bluez_card.E4_22_A5_BB_34_DB"
+set_hadsfree "JBL LIVE FLEX" "bluez_card.B4_84_D5_81_3A_43"
+
