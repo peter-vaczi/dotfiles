@@ -203,7 +203,7 @@
     
     "custom/weather": {
         "icon-size": 42,
-        "format": "{icon} {}",
+        "format": "{icon} {text}",
         "tooltip": true,
         "interval": 3600,
         "exec": "$HOME/bin/sway-scripts/weather.py",

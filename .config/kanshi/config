@@ -1,28 +1,28 @@
 profile laptop {
-	output eDP-1 mode 1920x1080 position 0,0
+	output eDP-1 mode 2560x1600 position 0,0
   exec  notify-send 'display profile: single screen'
 }
 
 profile home_gergo {
-	output eDP-1 mode 1920x1080 position 0,936
+	output eDP-1 mode 2560x1600 position 0,936
 	output "Dell Inc. DELL U2717D J0XYN7ANCHXL" mode 2560x1440 position 1920,0
   exec  notify-send 'display profile: Gergo'
 }
 
 profile home_kolos {
-	output eDP-1 mode 1920x1080 position 0,500
+	output eDP-1 mode 2560x1600 position 0,500
 	output "HP Inc. HP M27fw FHD 3CM1240NBK   " mode 1920x1080 position 1920,0
   exec  notify-send 'display profile: Kolos'
 }
 
 profile work1 {
-	output eDP-1 mode 1920x1080 position 1080,1080
+	output eDP-1 mode 2560x1600 position 1080,1080
 	output "HP Inc. HP E24 G4 CN41012M5H" mode 1920x1080 position 0,0
   exec  notify-send 'display profile: work, Józsi mellett'
 }
 
 profile work2 {
-	output eDP-1 mode 1920x1080 position 1045,1080
+	output eDP-1 mode 2560x1600 position 1045,1080
 	output "Hewlett Packard HP E231 6CM44702ZS" mode 1920x1080 position 0,0
 	output "Hewlett Packard HP E232 3CQ626099T" mode 1920x1080 position 1920,0
   exec  notify-send 'display profile: work2'
