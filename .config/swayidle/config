@@ -1,0 +1,7 @@
+timeout 240 'brightnessctl --save && brightnessctl set 5%' resume 'brightnessctl --restore'
+timeout 300 $HOME/bin/sway-scripts/lock.sh
+timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"'
+after-resume 'swaymsg "output * power on"'
+before-sleep 'playerctl pause'
+before-sleep $HOME/bin/sway-scripts/lock.sh
+lock $HOME/bin/sway-scripts/lock.sh
