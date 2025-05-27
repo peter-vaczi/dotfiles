@@ -10,6 +10,7 @@ proc get_pass {key} {
     }
 }
 
+# get token with otpclient-cli
 proc get_token {account pass} {
     spawn otpclient-cli show -a $account
     expect {
@@ -20,6 +21,14 @@ proc get_token {account pass} {
         -re "Current TOTP .*: (\[0-9]+)" {
             return $expect_out(1,string);
         }
+    }
+}
+
+# get token with 2fa
+proc get_token2 {account} {
+    spawn 2fa $account
+    expect -re "\[^\r\n]+" {
+        return $expect_out(0,string)
     }
 }
 
@@ -44,7 +53,7 @@ set key          [get_pass work/vpn-privkey]
 set passphrase   [get_pass work/vpn-passphrase]
 set password     [get_pass work/password]
 set email        [get_pass work/email]
-set token        [get_token $otp_account $otp_password]
+set token        [get_token2 $otp_account]
 
 parseargs $argc $argv
 puts "connecting to $gw"
