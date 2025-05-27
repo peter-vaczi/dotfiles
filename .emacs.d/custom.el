@@ -35,17 +35,20 @@
  '(grep-highlight-matches t)
  '(grep-template "grep <C> -nH -e <R> <F>")
  '(grep-use-null-device nil)
+ '(groovy-indent-offset 2)
  '(history-delete-duplicates t)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
+ '(jenkinsfile-mode-indent-offset 2)
  '(make-backup-files nil)
  '(mouse-wheel-follow-mouse t)
  '(mouse-wheel-mode t)
  '(package-selected-packages
    '(async auto-package-update bm cmake-mode company-box copilot copilot-chat diminish docker
-           docker-compose-mode docker-tramp flycheck ghub git-gutter go-autocomplete go-mode graphql
-           iedit json-mode json-reformat magit markdown-mode pkg-info quelpa-use-package
-           spacemacs-theme swiper xclip))
+           docker-compose-mode docker-tramp dockerfile-mode flycheck ghub git-gutter go-autocomplete
+           go-mode graphql groovy-mode iedit jenkinsfile-mode json-mode json-reformat k8s-mode
+           kotlin-mode magit markdown-mode pkg-info popvin popwin protobuf-mode quelpa-use-package
+           spacemacs-theme swiper xclip yang-mode))
  '(printer-name "bucit25b5.nsn-net.net")
  '(show-paren-style 'expression)
  '(tab-width 2)

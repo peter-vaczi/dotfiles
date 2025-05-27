@@ -24,16 +24,26 @@
                    :files ("*.el"))
 
   :diminish " ✈" ; or " ⚙"
-  :config
-  ;; keybindings that are active when copilot shows completions
-  (define-key copilot-mode-map (kbd "M-<next>")  #'copilot-next-completion)
-  (define-key copilot-mode-map (kbd "M-<prior>") #'copilot-previous-completion)
-  (define-key copilot-mode-map (kbd "M-<right>") #'copilot-accept-completion-by-word)
-  (define-key copilot-mode-map (kbd "M-<down>")  #'copilot-accept-completion-by-line)
+  :init
+   (setq copilot-indent-offset-warning-disable t)
 
-  (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
-  (define-key copilot-completion-map (kbd "TAB")   'copilot-accept-completion)
+  :bind (:map copilot-mode-map
+              ("M-<next>" . copilot-next-completion)
+              ("M-<prior>" . copilot-previous-completion)
+              ("M-<right>" . copilot-accept-completion-by-word)
+              ("M-<down>" . copilot-accept-completion-by-line)
+
+              :map copilot-completion-map
+              ("M-<tab>" . copilot-accept-completion)
+              )
+  
+  :config
   (add-to-list 'copilot-disable-predicates #'ptr/copilot-disable-predicate)
+  (add-to-list 'copilot-indentation-alist '(prog-mode 2))
+  (add-to-list 'copilot-indentation-alist '(org-mode 2))
+  (add-to-list 'copilot-indentation-alist '(text-mode 2))
+  (add-to-list 'copilot-indentation-alist '(closure-mode 2))
+  (add-to-list 'copilot-indentation-alist '(emacs-lisp-mode 2))
   )
 
 (add-hook 'prog-mode-hook 'copilot-mode)
@@ -42,6 +52,17 @@
 ;; (add-to-list 'copilot-major-mode-alist '("enh-ruby" . "ruby"))
 
 ;; (copilot-login)
+
+;;
+;; copilot chat
+;;
+(use-package copilot-chat
+  :config
+
+  :bind
+  ("<f12>" . copilot-chat-display)
+  ("C-<f12>" . copilot-chat-transient)
+  )
 
 (provide 'init-copilot)
 ;;; init-copilot.el ends here

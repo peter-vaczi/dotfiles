@@ -140,11 +140,6 @@
   )
 
 ;; ---------------------------------------------------------------------
-; recognize major mode for some extra files
-(add-to-list 'auto-mode-alist '("APKBUILD" . shell-script-mode)) ;
-(add-to-list 'auto-mode-alist '("\\.g4\\'" . antlr-mode))
-
-;; ---------------------------------------------------------------------
 (use-package kmacro
   :config
   (defalias 'kmacro-insert-macro 'insert-kbd-macro) ; have consistent name with kmackro-prefix
@@ -160,14 +155,6 @@
 (add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
 
 ;; ---------------------------------------------------------------------
-;; cmake
-(use-package cmake-mode)
-
-;; ---------------------------------------------------------------------
-;; markdown
-(use-package markdown-mode)
-
-;; ---------------------------------------------------------------------
 ;; flycheck
 (use-package flycheck
   :init
@@ -179,6 +166,22 @@
 (use-package iedit
   :bind ("C-;" . iedit-mode)
   )
+
+;; ---------------------------------------------------------------------
+;; major modes for some file types
+(use-package dockerfile-mode)
+(use-package jenkinsfile-mode)
+(use-package markdown-mode)
+(use-package cmake-mode)
+(use-package k8s-mode)
+(use-package kotlin-mode)
+(use-package protobuf-mode)
+(use-package yang-mode)
+
+;; ---------------------------------------------------------------------
+; recognize major mode for some extra files
+(add-to-list 'auto-mode-alist '("APKBUILD" . shell-script-mode)) ;
+(add-to-list 'auto-mode-alist '("\\.g4\\'" . antlr-mode))
 
 ;; ---------------------------------------------------------------------
 ;; mr-template-defult
@@ -220,7 +223,6 @@
 (global-set-key (kbd "<f9>") 'man)
 ; [f10] menu-bar-open
 ; [f11] used by awesome
-(global-set-key (kbd "<f12>") 'recompile)
 
 (provide 'init)
 ;;; init.el ends here
